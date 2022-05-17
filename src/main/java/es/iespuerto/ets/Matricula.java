@@ -174,7 +174,6 @@ public class Matricula {
      * Metodo para devolver un string con el formato deseado de los datos de la
      * matricula
      * 
-     * @param numerico si se desea la fecha con mes numerico o no
      * @return los datos de la matricula del alumno
      * @throws Exception si la fecha es incorrecta
      */

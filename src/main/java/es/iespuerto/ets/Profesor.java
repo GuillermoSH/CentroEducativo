@@ -86,7 +86,7 @@ public class Profesor {
 
     /**
      * Metodo que permite agregar asignaturas a impartir por el profesor siempre y
-     * cuando no {@link #superaLimiteHorasTotales(Temario)}, ni existe ya dentro de
+     * cuando no {@link #superaLimiteHorasTotales()}, ni existe ya dentro de
      * la lista
      * 
      * @param newAsignatura nueva asignatura a añadir
@@ -124,7 +124,7 @@ public class Profesor {
 
     /**
      * Metodo que permite editar asignaturas a impartir por el profesor siempre y
-     * cuando no {@link #superaLimiteHorasTotales(Temario)}, si existe dentro de
+     * cuando no {@link #superaLimiteHorasTotales()}, si existe dentro de
      * la lista
      * 
      * @param oldAsignatura antigua asignatura a modificar

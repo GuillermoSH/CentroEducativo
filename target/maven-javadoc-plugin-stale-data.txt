@@ -1,0 +1,47 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+-sourcepath
+'/home/daw/Escritorio/CentroEducativo/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/daw/Escritorio/CentroEducativo/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'centro_educativo 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' '/home/daw/Escritorio/CentroEducativo/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'centro_educativo 1.0-SNAPSHOT API'
+es.iespuerto.ets
+/home/daw/Escritorio/CentroEducativo/src/main/java = 1652797654364
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/package-search-index.js = 1652807244951
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/allpackages-index.html = 1652807244967
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/deprecated-list.html = 1652807244971
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/index-all.html = 1652807244963
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/type-search-index.js = 1652807244959
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/search.js = 1652807244983
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/member-search-index.zip = 1652807244959
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/member-search-index.js = 1652807244959
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/package-search-index.zip = 1652807244959
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/index.html = 1652807244975
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/stylesheet.css = 1652807244979
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/element-list = 1652807244883
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/constant-values.html = 1652807244895
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/type-search-index.zip = 1652807244959
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/overview-tree.html = 1652807244935
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/script.js = 1652807244979
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/allclasses-index.html = 1652807244967
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/help-doc.html = 1652807244979
+/home/daw/Escritorio/CentroEducativo/target/site/apidocs/allclasses.html = 1652807244975

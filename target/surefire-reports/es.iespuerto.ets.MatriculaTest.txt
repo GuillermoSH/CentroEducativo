@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: es.iespuerto.ets.MatriculaTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 s - in es.iespuerto.ets.MatriculaTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s - in es.iespuerto.ets.MatriculaTest

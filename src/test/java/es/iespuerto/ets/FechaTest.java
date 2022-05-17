@@ -1,12 +1,14 @@
 package es.iespuerto.ets;
 
+import java.io.*;
 import org.junit.jupiter.api.*;
+
 
 public class FechaTest {
     Fecha fecha = null;
 
     @BeforeEach
-    public void Before() throws Exception {
+    public void Before() throws IOException {
         fecha = new Fecha("29/02/2012");
     }
 

@@ -72,20 +72,6 @@ public class Fecha {
     }
 
     /**
-     * Metodo que genera las excepciones dependiendo de la condicion de entrada y la
-     * cadena a añadir en el mensaje de la excepcion
-     * 
-     * @param condicion a evaluar
-     * @param cadena    a añadir en el mensaje de excepcion
-     * @throws IOException si la condicion se cumple
-     */
-    public void exception(boolean condicion, String cadena) throws IOException {
-        if (condicion) {
-            throw new IOException("Error Fecha." + cadena);
-        }
-    }
-
-    /**
      * Metodo para la obtencion del parametro anio con su previa validacion a partir
      * del String de fecha
      * 
@@ -96,7 +82,9 @@ public class Fecha {
     public int obtenerAnio(String strAnio) throws IOException {
         int numAnio = Integer.parseInt(strAnio);
 
-        exception(numAnio < 1999 || numAnio > 9999, "obtenerAnio(): el anio es incorrecto.");
+        if (numAnio < 1999 || numAnio > 9999) {
+            throw new IOException("Error Fecha.obtenerAnio(): el anio es incorrecto.");
+        }
 
         return numAnio;
     }
@@ -112,8 +100,9 @@ public class Fecha {
     public int obtenerMes(String strMes) throws IOException {
         int numMes = Integer.parseInt(strMes);
 
-        exception(numMes > 12 || numMes < 1, "obtenerMes(): el mes es incorrecto.");
-
+        if (numMes > 12 || numMes < 1) {
+            throw new IOException("Error Fecha.obtenerMes(): el mes es incorrecto.");
+        }
         return numMes;
     }
 
@@ -131,8 +120,10 @@ public class Fecha {
         if (esBisiesto(this.anio)) {
             dias[1] = 29;
         }
-        exception((numDia < 1 || numDia > dias[this.mesNumerico - 1]), "obtenerDia(): el dia es incorrecto.");
 
+        if (numDia < 1 || numDia > dias[this.mesNumerico - 1]) {
+            throw new IOException("Error Fecha.obtenerDia(): el dia es incorrecto.");
+        }
         return numDia;
     }
 

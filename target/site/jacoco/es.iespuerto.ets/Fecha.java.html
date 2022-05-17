@@ -72,20 +72,6 @@ public class Fecha {
     }
 
     /**
-     * Metodo que genera las excepciones dependiendo de la condicion de entrada y la
-     * cadena a añadir en el mensaje de la excepcion
-     * 
-     * @param condicion a evaluar
-     * @param cadena    a añadir en el mensaje de excepcion
-     * @throws IOException si la condicion se cumple
-     */
-    public void exception(boolean condicion, String cadena) throws IOException {
-<span class="fc bfc" id="L83" title="All 2 branches covered.">        if (condicion) {</span>
-<span class="fc" id="L84">            throw new IOException(&quot;Error Fecha.&quot; + cadena);</span>
-        }
-<span class="fc" id="L86">    }</span>
-
-    /**
      * Metodo para la obtencion del parametro anio con su previa validacion a partir
      * del String de fecha
      * 
@@ -94,11 +80,13 @@ public class Fecha {
      * @throws IOException si el anio es incorrecto
      */
     public int obtenerAnio(String strAnio) throws IOException {
-<span class="fc" id="L97">        int numAnio = Integer.parseInt(strAnio);</span>
+<span class="fc" id="L83">        int numAnio = Integer.parseInt(strAnio);</span>
 
-<span class="pc bpc" id="L99" title="1 of 4 branches missed.">        exception(numAnio &lt; 1999 || numAnio &gt; 9999, &quot;obtenerAnio(): el anio es incorrecto.&quot;);</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        if (numAnio &lt; 1999 || numAnio &gt; 9999) {</span>
+<span class="fc" id="L86">            throw new IOException(&quot;Error Fecha.obtenerAnio(): el anio es incorrecto.&quot;);</span>
+        }
 
-<span class="fc" id="L101">        return numAnio;</span>
+<span class="fc" id="L89">        return numAnio;</span>
     }
 
     /**
@@ -110,11 +98,12 @@ public class Fecha {
      * @throws IOException si el mes es incorrecto
      */
     public int obtenerMes(String strMes) throws IOException {
-<span class="fc" id="L113">        int numMes = Integer.parseInt(strMes);</span>
+<span class="fc" id="L101">        int numMes = Integer.parseInt(strMes);</span>
 
-<span class="pc bpc" id="L115" title="2 of 4 branches missed.">        exception(numMes &gt; 12 || numMes &lt; 1, &quot;obtenerMes(): el mes es incorrecto.&quot;);</span>
-
-<span class="fc" id="L117">        return numMes;</span>
+<span class="fc bfc" id="L103" title="All 4 branches covered.">        if (numMes &gt; 12 || numMes &lt; 1) {</span>
+<span class="fc" id="L104">            throw new IOException(&quot;Error Fecha.obtenerMes(): el mes es incorrecto.&quot;);</span>
+        }
+<span class="fc" id="L106">        return numMes;</span>
     }
 
     /**
@@ -126,14 +115,16 @@ public class Fecha {
      * @throws IOException si el dia es incorrecto
      */
     public int obtenerDia(String strDia) throws IOException {
-<span class="fc" id="L129">        int numDia = Integer.parseInt(strDia);</span>
+<span class="fc" id="L118">        int numDia = Integer.parseInt(strDia);</span>
 
-<span class="fc bfc" id="L131" title="All 2 branches covered.">        if (esBisiesto(this.anio)) {</span>
-<span class="fc" id="L132">            dias[1] = 29;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (esBisiesto(this.anio)) {</span>
+<span class="fc" id="L121">            dias[1] = 29;</span>
         }
-<span class="pc bpc" id="L134" title="1 of 4 branches missed.">        exception((numDia &lt; 1 || numDia &gt; dias[this.mesNumerico - 1]), &quot;obtenerDia(): el dia es incorrecto.&quot;);</span>
+<span class="fc bfc" id="L123" title="All 4 branches covered.">        if (numDia &lt; 1 || numDia &gt; dias[this.mesNumerico - 1]) {</span>
+<span class="fc" id="L124">            throw new IOException(&quot;Error Fecha.obtenerDia(): el dia es incorrecto.&quot;);</span>
+        }
 
-<span class="fc" id="L136">        return numDia;</span>
+<span class="fc" id="L127">        return numDia;</span>
     }
 
     /**
@@ -143,7 +134,7 @@ public class Fecha {
      * @return True o false dependiendo de si es bisiesto
      */
     private boolean esBisiesto(int anio) {
-<span class="fc bfc" id="L146" title="All 6 branches covered.">        return (anio % 4 == 0 &amp;&amp; anio % 100 != 0 || anio % 400 == 0);</span>
+<span class="fc bfc" id="L137" title="All 6 branches covered.">        return (anio % 4 == 0 &amp;&amp; anio % 100 != 0 || anio % 400 == 0);</span>
     }
 
     /**
@@ -156,10 +147,10 @@ public class Fecha {
      * @throws Exception si algun parametro de la fecha es incorrecto
      */
     public String imprimeFecha(boolean numerico) {
-<span class="fc bfc" id="L159" title="All 2 branches covered.">        if (!numerico) {</span>
-<span class="fc" id="L160">            return String.format(&quot;%d de %s de %d&quot;, this.dia, getMesNombre(), this.anio);</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        if (!numerico) {</span>
+<span class="fc" id="L151">            return String.format(&quot;%d de %s de %d&quot;, this.dia, getMesNombre(), this.anio);</span>
         }
-<span class="fc" id="L162">        return String.format(&quot;%02d/%02d/%d&quot;, this.dia, this.mesNumerico, this.anio);</span>
+<span class="fc" id="L153">        return String.format(&quot;%02d/%02d/%d&quot;, this.dia, this.mesNumerico, this.anio);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -42,7 +42,7 @@ public class Profesor {
     public String getNombre() {
 <span class="fc bfc" id="L43" title="All 2 branches covered.">        if (this.nombre.contains(&quot; &quot;)) {</span>
 <span class="fc" id="L44">            this.nombre = capitalizarCadenaCompuesta(this.nombre);</span>
-<span class="fc" id="L45">        } else {</span>
+        } else {
 <span class="fc" id="L46">            this.nombre = capitalizarCadenaSimple(this.nombre);</span>
         }
 
@@ -59,7 +59,7 @@ public class Profesor {
     public String getApellidos() {
 <span class="fc bfc" id="L60" title="All 2 branches covered.">        if (this.apellidos.contains(&quot; &quot;)) {</span>
 <span class="fc" id="L61">            this.apellidos = capitalizarCadenaCompuesta(this.apellidos);</span>
-<span class="fc" id="L62">        } else {</span>
+        } else {
 <span class="fc" id="L63">            this.apellidos = capitalizarCadenaSimple(this.apellidos);</span>
         }
 
@@ -184,9 +184,9 @@ public class Profesor {
 
 <span class="fc bfc" id="L185" title="All 2 branches covered.">            if (horasTotales &gt; 3000) {</span>
 <span class="fc" id="L186">                throw new IOException(</span>
-<span class="fc" id="L187">                        &quot;Error, el límite de horas totales a impartir se ha superado.&quot;);</span>
+                        &quot;Error, el límite de horas totales a impartir se ha superado.&quot;);
             }
-        }
+<span class="fc" id="L189">        }</span>
 <span class="fc" id="L190">    }</span>
 
     /**

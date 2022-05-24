@@ -17,7 +17,7 @@ public class Alumno {
     private String fechaNacimiento;
 <span class="fc" id="L18">    private List&lt;Matricula&gt; matriculas = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L19">    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',</span>
-            'H', 'L', 'C', 'K', 'E' };
+<span class="fc" id="L20">            'H', 'L', 'C', 'K', 'E' };</span>
 
     /**
      * Constructor parametrizado de la clase Alumno
@@ -28,11 +28,11 @@ public class Alumno {
      * @param fecha      del alumno
      * @param matriculas puestas a cursar por el alumno
      */
-    public Alumno(String nombre, String apellidos, int numDni, List&lt;Matricula&gt; matriculas, String fecha,
-<span class="fc" id="L32">            boolean numerico) throws IOException {</span>
+<span class="fc" id="L31">    public Alumno(String nombre, String apellidos, int numDni, List&lt;Matricula&gt; matriculas, String fecha,</span>
+            boolean numerico) throws IOException {
 <span class="fc" id="L33">        this.nombre = nombre;</span>
 <span class="fc" id="L34">        this.apellidos = apellidos;</span>
-<span class="fc" id="L35">        this.dni = obtenerDni(numDni, letras[numDni % 23]);</span>
+<span class="fc" id="L35">        this.dni = numDni + &quot;&quot; + letras[numDni % 23];</span>
 <span class="fc" id="L36">        this.fechaNacimiento = obtenerFecha(fecha, numerico);</span>
 <span class="fc" id="L37">        this.matriculas = matriculas;</span>
 <span class="fc" id="L38">    }</span>
@@ -47,7 +47,7 @@ public class Alumno {
     public String getNombre() {
 <span class="fc bfc" id="L48" title="All 2 branches covered.">        if (this.nombre.contains(&quot; &quot;)) {</span>
 <span class="fc" id="L49">            this.nombre = capitalizarCadenaCompuesta(this.nombre);</span>
-        } else {
+<span class="fc" id="L50">        } else {</span>
 <span class="fc" id="L51">            this.nombre = capitalizarCadenaSimple(this.nombre);</span>
         }
 
@@ -64,7 +64,7 @@ public class Alumno {
     public String getApellidos() {
 <span class="fc bfc" id="L65" title="All 2 branches covered.">        if (this.apellidos.contains(&quot; &quot;)) {</span>
 <span class="fc" id="L66">            this.apellidos = capitalizarCadenaCompuesta(this.apellidos);</span>
-        } else {
+<span class="fc" id="L67">        } else {</span>
 <span class="fc" id="L68">            this.apellidos = capitalizarCadenaSimple(this.apellidos);</span>
         }
 
@@ -103,14 +103,10 @@ public class Alumno {
 <span class="fc" id="L103">        return this.matriculas;</span>
     }
 
-    public String obtenerDni(int numDni, char letraDni) {
-<span class="fc" id="L107">        return numDni + &quot;&quot; + letraDni;</span>
-    }
+    private String obtenerFecha(String fecha, boolean numerico) throws IOException {
+<span class="fc" id="L107">        Fecha fechaObj = new Fecha(fecha);</span>
 
-    public String obtenerFecha(String fecha, boolean numerico) throws IOException {
-<span class="fc" id="L111">        Fecha fechaObj = new Fecha(fecha);</span>
-
-<span class="fc" id="L113">        return fechaObj.imprimeFecha(numerico);</span>
+<span class="fc" id="L109">        return fechaObj.imprimeFecha(numerico);</span>
     }
 
     /**
@@ -121,11 +117,11 @@ public class Alumno {
      * @return cadena de caracteres capitalizando el primer caracter
      */
     private String capitalizarCadenaCompuesta(String cadena) {
-<span class="fc" id="L124">        String[] cadenas = cadena.split(&quot; &quot;);</span>
-<span class="fc" id="L125">        cadenas[0] = cadenas[0].substring(0, 1).toUpperCase() + cadenas[0].substring(1).toLowerCase();</span>
-<span class="fc" id="L126">        cadenas[1] = cadenas[1].substring(0, 1).toUpperCase() + cadenas[1].substring(1).toLowerCase();</span>
+<span class="fc" id="L120">        String[] cadenas = cadena.split(&quot; &quot;);</span>
+<span class="fc" id="L121">        cadenas[0] = cadenas[0].substring(0, 1).toUpperCase() + cadenas[0].substring(1).toLowerCase();</span>
+<span class="fc" id="L122">        cadenas[1] = cadenas[1].substring(0, 1).toUpperCase() + cadenas[1].substring(1).toLowerCase();</span>
 
-<span class="fc" id="L128">        return &quot;&quot; + cadenas[0] + &quot; &quot; + cadenas[1];</span>
+<span class="fc" id="L124">        return &quot;&quot; + cadenas[0] + &quot; &quot; + cadenas[1];</span>
     }
 
     /**
@@ -136,7 +132,7 @@ public class Alumno {
      * @return cadena de caracteres capitalizando el primer caracter
      */
     private String capitalizarCadenaSimple(String cadena) {
-<span class="fc" id="L139">        return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();</span>
+<span class="fc" id="L135">        return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();</span>
     }
 
     /**
@@ -148,13 +144,13 @@ public class Alumno {
      * @throws Exception si la matricula ya existia en la lista
      */
     public boolean agregarMatricula(Matricula newMatricula) throws IOException {
-<span class="fc bfc" id="L151" title="All 2 branches covered.">        if (this.matriculas.contains(newMatricula)) {</span>
-<span class="fc" id="L152">            throw new IOException(&quot;Error Alumno.agregarMatricula(): esa matricula ya existe.&quot;);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (this.matriculas.contains(newMatricula)) {</span>
+<span class="fc" id="L148">            throw new IOException(&quot;Error Alumno.agregarMatricula(): esa matricula ya existe.&quot;);</span>
         }
 
-<span class="fc" id="L155">        matriculas.add(newMatricula);</span>
+<span class="fc" id="L151">        matriculas.add(newMatricula);</span>
 
-<span class="fc" id="L157">        return true;</span>
+<span class="fc" id="L153">        return true;</span>
     }
 
     /**
@@ -166,12 +162,12 @@ public class Alumno {
      * @throws Exception si la matricula no existe dentro de la lista
      */
     public boolean eliminarMatricula(Matricula oldMatricula) throws IOException {
-<span class="fc bfc" id="L169" title="All 2 branches covered.">        if (this.matriculas.contains(oldMatricula)) {</span>
-<span class="fc" id="L170">            matriculas.remove(oldMatricula);</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">        if (this.matriculas.contains(oldMatricula)) {</span>
+<span class="fc" id="L166">            matriculas.remove(oldMatricula);</span>
 
-<span class="fc" id="L172">            return true;</span>
+<span class="fc" id="L168">            return true;</span>
         } else {
-<span class="fc" id="L174">            throw new IOException(&quot;Error Alumno.eliminarMatricula(): esa matricula no existe.&quot;);</span>
+<span class="fc" id="L170">            throw new IOException(&quot;Error Alumno.eliminarMatricula(): esa matricula no existe.&quot;);</span>
         }
     }
 
@@ -186,11 +182,11 @@ public class Alumno {
      * @throws Exception si no se ha encontrado la matricula anterior
      */
     public boolean editarMatricula(Matricula oldMatricula, Matricula newMatricula) throws IOException {
-<span class="fc bfc" id="L189" title="All 2 branches covered.">        if (this.matriculas.contains(oldMatricula)) {</span>
-<span class="fc" id="L190">            matriculas.set(matriculas.indexOf(oldMatricula), newMatricula);</span>
-<span class="fc" id="L191">            return true;</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">        if (this.matriculas.contains(oldMatricula)) {</span>
+<span class="fc" id="L186">            matriculas.set(matriculas.indexOf(oldMatricula), newMatricula);</span>
+<span class="fc" id="L187">            return true;</span>
         } else {
-<span class="fc" id="L193">            throw new IOException(&quot;Error Alumno.editarMatricula(): esa matricula no existe.&quot;);</span>
+<span class="fc" id="L189">            throw new IOException(&quot;Error Alumno.editarMatricula(): esa matricula no existe.&quot;);</span>
         }
     }
 }

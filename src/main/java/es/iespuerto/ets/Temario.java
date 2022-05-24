@@ -68,11 +68,9 @@ public class Temario {
     public boolean agregarTema(Tema newTema) throws IOException {
         if (temas.contains(newTema)) {
             throw new IOException("Error Temario.agregarTema(): el tema ya existe.");
-        } else {
-            temas.add(newTema);
-
-            return true;
         }
+        temas.add(newTema);
+        return true;
     }
 
     /**
@@ -83,12 +81,11 @@ public class Temario {
      * @throws Exception Error Temario.eliminar(): no existe ese tema.
      */
     public boolean eliminarTema(Tema oldTema) throws IOException {
-        if (temas.contains(oldTema)) {
-            temas.remove(oldTema);
-            return true;
-        } else {
+        if (!temas.contains(oldTema)) {
             throw new IOException("Error Temario.eliminarTema(): no existe ese tema.");
         }
+        temas.remove(oldTema);
+        return true;
     }
 
     /**
@@ -100,12 +97,11 @@ public class Temario {
      * @throws Exception Error Temario.editar(): no existe ese tema
      */
     public boolean editarTema(Tema oldTema, Tema newTema) throws IOException {
-        if (temas.contains(oldTema)) {
-            temas.set(temas.indexOf(oldTema), newTema);
-            return true;
-        } else {
+        if (!temas.contains(oldTema)) {
             throw new IOException("Error Temario.editarTema(): no existe ese tema");
         }
+        temas.set(temas.indexOf(oldTema), newTema);
+        return true;
     }
 
     /**

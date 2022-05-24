@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.iespuerto.ets.TemarioTest" time="0.045" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.iespuerto.ets.CapitalizarCadenasTest" time="0.009" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -56,14 +56,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="eliminarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.001"/>
-  <testcase name="imprimeTemarioTest" classname="es.iespuerto.ets.TemarioTest" time="0.009"/>
-  <testcase name="getHorasTotalesTest" classname="es.iespuerto.ets.TemarioTest" time="0.001"/>
-  <testcase name="exceptionEliminarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.002"/>
-  <testcase name="exceptionEditarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.001"/>
-  <testcase name="editarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.004"/>
-  <testcase name="agregarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.002"/>
-  <testcase name="exceptionAgregarTemaTest" classname="es.iespuerto.ets.TemarioTest" time="0.004"/>
-  <testcase name="getNombreTest" classname="es.iespuerto.ets.TemarioTest" time="0.003"/>
-  <testcase name="getTemas" classname="es.iespuerto.ets.TemarioTest" time="0.001"/>
+  <testcase name="cadenaSimpleTest" classname="es.iespuerto.ets.CapitalizarCadenasTest" time="0.003"/>
+  <testcase name="cadenaCompuesta2Test" classname="es.iespuerto.ets.CapitalizarCadenasTest" time="0"/>
+  <testcase name="cadenaCompuesta3Test" classname="es.iespuerto.ets.CapitalizarCadenasTest" time="0.001"/>
+  <testcase name="cadenaCompuesta4Test" classname="es.iespuerto.ets.CapitalizarCadenasTest" time="0.001"/>
 </testsuite>

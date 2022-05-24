@@ -97,7 +97,6 @@ public class Usuario {
      * @throws Exception si el email no contiene alguna de las terminaciones
      *                   nombradas
      */
-
     private void validarEmail(String email) throws IllegalArgumentException {
         // Patron para validar el email
         Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);

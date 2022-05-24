@@ -32,7 +32,7 @@ public class Alumno {
             boolean numerico) throws IOException {
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.dni = obtenerDni(numDni, letras[numDni % 23]);
+        this.dni = numDni + "" + letras[numDni % 23];
         this.fechaNacimiento = obtenerFecha(fecha, numerico);
         this.matriculas = matriculas;
     }
@@ -103,11 +103,7 @@ public class Alumno {
         return this.matriculas;
     }
 
-    public String obtenerDni(int numDni, char letraDni) {
-        return numDni + "" + letraDni;
-    }
-
-    public String obtenerFecha(String fecha, boolean numerico) throws IOException {
+    private String obtenerFecha(String fecha, boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(fecha);
 
         return fechaObj.imprimeFecha(numerico);

@@ -50,7 +50,7 @@ public class Alumno {
         } else {
             this.nombre = capitalizarCadenaSimple(this.nombre);
         }
-
+        // TODO: cambiar esto por la clase nueva
         return this.nombre;
     }
 
@@ -67,7 +67,7 @@ public class Alumno {
         } else {
             this.apellidos = capitalizarCadenaSimple(this.apellidos);
         }
-
+        // TODO: cambiar esto por la clase nueva
         return this.apellidos;
     }
 

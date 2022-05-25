@@ -18,20 +18,26 @@ public class Matricula {
     private String fecha;
     private double precio;
     private boolean pagada = false;
-    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
-            'H', 'L', 'C', 'K', 'E' };
 
     /**
-     * Constructor parametrizado de la clase Matricula
+     * Constructor parametrizado de la clase
      * 
+     * @param numDni      del matriculado
+     * @param nombre      del centro
+     * @param asignaturas a estudiar por el alumno
+     * @param notas       del alumno
+     * @param fecha       de realizacion de la matricula
+     * @throws IOException
      */
     public Matricula(int numDni, String nombre, List<Asignatura> asignaturas, Map<Asignatura, Double> notas,
-            String fecha, boolean numerico) throws IOException {
-        this.dni = obtenerDni(numDni, letras[numDni % 23]);
+            String fecha) throws IOException {
+        DNI objDNI = new DNI(numDni);
+        this.dni = objDNI.getDNI();
+
         this.nombre = nombre;
         this.asignaturas = asignaturas;
         this.notas = notas;
-        this.fecha = obtenerFecha(fecha,numerico);
+        this.fecha = obtenerFecha(fecha, true);
         this.precio = obtenerPrecio();
     }
 
@@ -39,6 +45,7 @@ public class Matricula {
      * Getter del parametro dni
      * 
      * @return el dni con la letra calculada
+     * @see DNI
      */
     public String getDni() {
         return this.dni;
@@ -71,8 +78,15 @@ public class Matricula {
         return this.notas;
     }
 
-    public String getFecha() {
-        return this.fecha;
+    /**
+     * Getter del parametro fecha
+     * 
+     * @param numerico si se desea en formato numerico o no
+     * @return fecha validada en el formato deseado
+     * @throws IOException si alguna cifra es incorrecta
+     */
+    public String getFecha(boolean numerico) throws IOException {
+        return obtenerFecha(this.fecha, numerico);
     }
 
     /**
@@ -84,28 +98,50 @@ public class Matricula {
         return this.precio;
     }
 
+    /**
+     * Getter del parametro pagada
+     * 
+     * @return si la matricula ha sido pagada o no
+     */
     public boolean isPagada() {
         return this.pagada;
     }
 
-    public String obtenerFecha(String fecha,boolean numerico) throws IOException {
+    /**
+     * Metodo para la validacion de la variable fecha mediante el uso de la clase
+     * {@link Fecha}
+     * 
+     * @param fecha    a validar
+     * @param numerico si se desea en formato numerico o no
+     * @return la fecha validada y en el formato deseado
+     * @throws IOException si alguna cifra es incorrecta
+     */
+    public String obtenerFecha(String fecha, boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(fecha);
 
         return fechaObj.imprimeFecha(numerico);
     }
 
+    /**
+     * Metodo para la obtencion del total a pagar por la matricula dependiendo de
+     * las asignaturas elegidas
+     * 
+     * @return precio total a pagar
+     */
     public double obtenerPrecio() {
         double precioTotal = 0;
         for (Asignatura asignatura : asignaturas) {
-            precio += asignatura.getPrecio();
+            precioTotal += asignatura.getPrecio();
         }
         return precioTotal;
     }
 
-    public String obtenerDni(int numDni, char letraDni) {
-        return numDni + "" + letraDni;
-    }
-
+    /**
+     * Metodo que permite al usuario pagar dicha matricula introduciendo un importe
+     * que si no supera el precio de la matricula sera invalidado
+     * 
+     * @param importe introducido por el usuario
+     */
     public void pagarMatricula(double importe) {
         if (importe >= obtenerPrecio()) {
             this.pagada = true;
@@ -177,8 +213,9 @@ public class Matricula {
      * @return los datos de la matricula del alumno
      * @throws Exception si la fecha es incorrecta
      */
-    public String imprimeMatricula() {
-        return String.format("Matricula del alumno con dni: %s, en el centro %s, a %s", this.dni, this.nombre,
-                this.fecha);
+    @Override
+    public String toString() {
+        return String.format("Matricula para %s en el centro %s a %s, con las asignaturas:\n    %s", this.dni, this.nombre,
+                this.fecha,this.asignaturas.toString());
     }
 }

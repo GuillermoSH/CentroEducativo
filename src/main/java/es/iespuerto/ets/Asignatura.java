@@ -57,7 +57,8 @@ public class Asignatura {
      * 
      * @return los datos de cada asignatura con el formato deseado
      */
-    public String imprimeAsignatura() {
+    @Override
+    public String toString() {
         return String.format("Asignatura %s con un precio de %.2f euros: %s", getNombre(), getPrecio(), this.temario);
     }
 }

@@ -57,8 +57,9 @@ public class Asignatura {
      * 
      * @return los datos de cada asignatura con el formato deseado
      */
-    public String imprimeAsignatura() {
-<span class="fc" id="L61">        return String.format(&quot;Asignatura %s con un precio de %.2f euros: %s&quot;, getNombre(), getPrecio(), this.temario);</span>
+    @Override
+    public String toString() {
+<span class="fc" id="L62">        return String.format(&quot;Asignatura %s con un precio de %.2f euros: %s&quot;, getNombre(), getPrecio(), this.temario);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

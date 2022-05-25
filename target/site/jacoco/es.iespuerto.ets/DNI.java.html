@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DNI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">centro_educativo</a> &gt; <a href="index.source.html" class="el_package">es.iespuerto.ets</a> &gt; <span class="el_source">DNI.java</span></div><h1>DNI.java</h1><pre class="source lang-java linenums">package es.iespuerto.ets;
+
+/**
+ * Clase DNI para la validacion y calculo de la letra a partir del numero del
+ * DNI introducido
+ * 
+ * @param dni    con la letra calculada y comprobado que es un numero valido
+ * @param letras array con las letras de los DNIs ordenadas para hacer el
+ *               calculo de la misma correctamente
+ * 
+ * @author GuillermoSH
+ */
+public class DNI {
+    private String dni;
+<span class="fc" id="L15">    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',</span>
+            'H', 'L', 'C', 'K', 'E' };
+
+    /**
+     * Constructor parametrizado de la clase con el metodo de validacion y calculo
+     * de la letra incluidos en la insercion de las variable numeroDNI a la clase
+     * 
+     * @param numeroDNI que se quiere comprobar y calcular su letra
+     * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
+     * @see #obtenerDNI(int)
+     */
+<span class="fc" id="L26">    public DNI(int numeroDNI) throws IllegalArgumentException {</span>
+<span class="fc" id="L27">        this.dni = obtenerDNI(numeroDNI);</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Getter del dni ya con todas las comprobaciones hechas y calculada la letra
+     * del mismo
+     * 
+     * @return el dni con letra
+     */
+    public String getDNI() {
+<span class="fc" id="L37">        return this.dni;</span>
+    }
+
+    /**
+     * Metodo que comprueba que la longitud del dni es la necesaria para que el
+     * programa se ejecute correctamente
+     * 
+     * @param numeroDNI que se quiere comprobar y calcular su letra
+     * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
+     */
+    private void dniValido(int numeroDNI) throws IllegalArgumentException {
+<span class="fc" id="L48">        String DNI = &quot;&quot; + numeroDNI;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (DNI.length() != 8) {</span>
+<span class="fc" id="L50">            throw new IllegalArgumentException(&quot;Error DNI.dniValido(): el numero debe contener 8 digitos.&quot;);</span>
+        }
+<span class="fc" id="L52">    }</span>
+
+    /**
+     * Metodo que calcula la letra del dni habiendose asegurado antes de que el
+     * numeroDNI cumple con los requisitos
+     * 
+     * @param numeroDNI que se quiere comprobar y calcular su letra
+     * @return dni con letra
+     * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
+     */
+    private String obtenerDNI(int numeroDNI) throws IllegalArgumentException {
+<span class="fc" id="L63">        dniValido(numeroDNI);</span>
+
+<span class="fc" id="L65">        return numeroDNI + &quot;&quot; + letras[numeroDNI % 23];</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

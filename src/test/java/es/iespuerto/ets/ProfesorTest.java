@@ -140,6 +140,6 @@ public class ProfesorTest {
         Assertions.assertEquals(
                 String.format("Profesor: %s %s, con titulación: %s y asignaturas impartidas:  %s", profesor.getNombre(),
                         profesor.getApellidos(), profesor.getTitulacion(), profesor.getAsignaturas()),
-                profesor.imprimeProfesor());
+                profesor.toString());
     }
 }

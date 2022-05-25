@@ -26,44 +26,34 @@ public class Profesor {
      * @param asignaturas asignaturas impartidas por el profesor
      */
 <span class="fc" id="L28">    public Profesor(String nombre, String apellidos, String titulacion, List&lt;Asignatura&gt; asignaturas) {</span>
-<span class="fc" id="L29">        this.nombre = nombre;</span>
-<span class="fc" id="L30">        this.apellidos = apellidos;</span>
-<span class="fc" id="L31">        this.titulacion = titulacion;</span>
-<span class="fc" id="L32">        this.asignaturas = asignaturas;</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L29">        CapitalizarCadenas cadenaCapitalizada = new CapitalizarCadenas(nombre);</span>
+<span class="fc" id="L30">        this.nombre = cadenaCapitalizada.getCadenaCapitalizada();</span>
+
+<span class="fc" id="L32">        cadenaCapitalizada = new CapitalizarCadenas(apellidos);</span>
+<span class="fc" id="L33">        this.apellidos = cadenaCapitalizada.getCadenaCapitalizada();</span>
+
+<span class="fc" id="L35">        this.titulacion = titulacion;</span>
+<span class="fc" id="L36">        this.asignaturas = asignaturas;</span>
+<span class="fc" id="L37">    }</span>
 
     /**
      * Getter del parametro nombre de la clase Profesor
      * 
      * @return el nombre del profesor en cuestion capitalizado
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getNombre() {
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (this.nombre.contains(&quot; &quot;)) {</span>
-<span class="fc" id="L44">            this.nombre = capitalizarCadenaCompuesta(this.nombre);</span>
-        } else {
-<span class="fc" id="L46">            this.nombre = capitalizarCadenaSimple(this.nombre);</span>
-        }
-
-<span class="fc" id="L49">        return this.nombre;</span>
+<span class="fc" id="L46">        return this.nombre;</span>
     }
 
     /**
      * Getter del parametro apellidos
      * 
      * @return apellidos del profesor sea 1 o 2 capitalizados
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getApellidos() {
-<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (this.apellidos.contains(&quot; &quot;)) {</span>
-<span class="fc" id="L61">            this.apellidos = capitalizarCadenaCompuesta(this.apellidos);</span>
-        } else {
-<span class="fc" id="L63">            this.apellidos = capitalizarCadenaSimple(this.apellidos);</span>
-        }
-
-<span class="fc" id="L66">        return this.apellidos;</span>
+<span class="fc" id="L56">        return this.apellidos;</span>
     }
 
     /**
@@ -72,7 +62,7 @@ public class Profesor {
      * @return titulacion del profesor
      */
     public String getTitulacion() {
-<span class="fc" id="L75">        return this.titulacion;</span>
+<span class="fc" id="L65">        return this.titulacion;</span>
     }
 
     /**
@@ -81,7 +71,7 @@ public class Profesor {
      * @return lista de objetos de la clase Asignatura
      */
     public List&lt;Asignatura&gt; getAsignaturas() {
-<span class="fc" id="L84">        return this.asignaturas;</span>
+<span class="fc" id="L74">        return this.asignaturas;</span>
     }
 
     /**
@@ -95,14 +85,14 @@ public class Profesor {
      *                   la asignatura a añadir
      */
     public boolean agregarAsignatura(Asignatura newAsignatura) throws IOException {
-<span class="fc" id="L98">        superaLimiteHorasTotales();</span>
+<span class="fc" id="L88">        superaLimiteHorasTotales();</span>
 
-<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (this.asignaturas.contains(newAsignatura)) {</span>
-<span class="fc" id="L101">            throw new IOException(&quot;Error Profesor.agregarAsignatura(): la asignatura ya existe.&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (this.asignaturas.contains(newAsignatura)) {</span>
+<span class="fc" id="L91">            throw new IOException(&quot;Error Profesor.agregarAsignatura(): la asignatura ya existe.&quot;);</span>
         }
-<span class="fc" id="L103">        asignaturas.add(newAsignatura);</span>
+<span class="fc" id="L93">        asignaturas.add(newAsignatura);</span>
 
-<span class="fc" id="L105">        return true;</span>
+<span class="fc" id="L95">        return true;</span>
     }
 
     /**
@@ -114,12 +104,11 @@ public class Profesor {
      * @throws Exception si no existe la asignatura
      */
     public boolean eliminarAsignatura(Asignatura oldAsignatura) throws IOException {
-<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (this.asignaturas.contains(oldAsignatura)) {</span>
-<span class="fc" id="L118">            this.asignaturas.remove(oldAsignatura);</span>
-<span class="fc" id="L119">            return true;</span>
-        } else {
-<span class="fc" id="L121">            throw new IOException(&quot;Error Profesor.eliminarAsignatura(): no existe esa asignatura.&quot;);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (!this.asignaturas.contains(oldAsignatura)) {</span>
+<span class="fc" id="L108">            throw new IOException(&quot;Error Profesor.eliminarAsignatura(): no existe esa asignatura.&quot;);</span>
         }
+<span class="fc" id="L110">        this.asignaturas.remove(oldAsignatura);</span>
+<span class="fc" id="L111">        return true;</span>
     }
 
     /**
@@ -134,40 +123,13 @@ public class Profesor {
      *                   en la lista
      */
     public boolean editarAsignatura(Asignatura oldAsignatura, Asignatura newAsignatura) throws IOException {
-<span class="fc" id="L137">        superaLimiteHorasTotales();</span>
+<span class="fc" id="L126">        superaLimiteHorasTotales();</span>
 
-<span class="fc bfc" id="L139" title="All 2 branches covered.">        if (this.asignaturas.contains(oldAsignatura)) {</span>
-<span class="fc" id="L140">            this.asignaturas.set(this.asignaturas.indexOf(oldAsignatura), newAsignatura);</span>
-<span class="fc" id="L141">            return true;</span>
-        } else {
-<span class="fc" id="L143">            throw new IOException(&quot;Error Profesor.editarAsignatura(): no existe esa asignatura.&quot;);</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (!this.asignaturas.contains(oldAsignatura)) {</span>
+<span class="fc" id="L129">            throw new IOException(&quot;Error Profesor.editarAsignatura(): no existe esa asignatura.&quot;);</span>
         }
-    }
-
-    /**
-     * Metodo para capitalizar una cadena compuesta de caracteres. Ej: &quot;juan
-     * antonio&quot; -&gt; &quot;Juan Antonio&quot;
-     * 
-     * @param cadena de caracteres compuesta a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaCompuesta(String cadena) {
-<span class="fc" id="L155">        String[] cadenas = cadena.split(&quot; &quot;);</span>
-<span class="fc" id="L156">        cadenas[0] = cadenas[0].substring(0, 1).toUpperCase() + cadenas[0].substring(1).toLowerCase();</span>
-<span class="fc" id="L157">        cadenas[1] = cadenas[1].substring(0, 1).toUpperCase() + cadenas[1].substring(1).toLowerCase();</span>
-
-<span class="fc" id="L159">        return &quot;&quot; + cadenas[0] + &quot; &quot; + cadenas[1];</span>
-    }
-
-    /**
-     * Metodo para capitalizar una cadena simple de caracteres. Ej: &quot;guillermo&quot; -&gt;
-     * &quot;Guillermo&quot;
-     * 
-     * @param cadena de caracteres simple a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaSimple(String cadena) {
-<span class="fc" id="L170">        return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();</span>
+<span class="fc" id="L131">        this.asignaturas.set(this.asignaturas.indexOf(oldAsignatura), newAsignatura);</span>
+<span class="fc" id="L132">        return true;</span>
     }
 
     /**
@@ -175,19 +137,19 @@ public class Profesor {
      * de docencia escolar no se supera
      */
     private void superaLimiteHorasTotales() throws IOException {
-<span class="fc" id="L178">        int horasTotales = 0;</span>
+<span class="fc" id="L140">        int horasTotales = 0;</span>
 
-<span class="fc bfc" id="L180" title="All 2 branches covered.">        for (Asignatura asignatura : asignaturas) {</span>
-<span class="fc" id="L181">            Temario temario = asignatura.getTemario();</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        for (Asignatura asignatura : asignaturas) {</span>
+<span class="fc" id="L143">            Temario temario = asignatura.getTemario();</span>
 
-<span class="fc" id="L183">            horasTotales += temario.getHorasTotales();</span>
+<span class="fc" id="L145">            horasTotales += temario.getHorasTotales();</span>
 
-<span class="fc bfc" id="L185" title="All 2 branches covered.">            if (horasTotales &gt; 3000) {</span>
-<span class="fc" id="L186">                throw new IOException(</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">            if (horasTotales &gt; 3000) {</span>
+<span class="fc" id="L148">                throw new IOException(</span>
                         &quot;Error, el límite de horas totales a impartir se ha superado.&quot;);
             }
-<span class="fc" id="L189">        }</span>
-<span class="fc" id="L190">    }</span>
+<span class="fc" id="L151">        }</span>
+<span class="fc" id="L152">    }</span>
 
     /**
      * Metodo para devolver un string con formato dado con los datos de cada
@@ -195,9 +157,10 @@ public class Profesor {
      * 
      * @return los datos de cada profesor
      */
-    public String imprimeProfesor() {
-<span class="fc" id="L199">        return String.format(&quot;Profesor: %s %s, con titulación: %s y asignaturas impartidas:  %s&quot;, getNombre(),</span>
-<span class="fc" id="L200">                getApellidos(), this.titulacion, this.asignaturas);</span>
+    @Override
+    public String toString() {
+<span class="fc" id="L162">        return String.format(&quot;Profesor: %s %s, con titulación: %s y asignaturas impartidas:  %s&quot;, getNombre(),</span>
+<span class="fc" id="L163">                getApellidos(), this.titulacion, this.asignaturas);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

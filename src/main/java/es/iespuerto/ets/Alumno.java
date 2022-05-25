@@ -1,8 +1,7 @@
 package es.iespuerto.ets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Clase de almacenamiento de datos relacionados con cada uno de los alumnos
@@ -16,8 +15,6 @@ public class Alumno {
     private String dni;
     private String fechaNacimiento;
     private List<Matricula> matriculas = new ArrayList<>();
-    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',
-            'H', 'L', 'C', 'K', 'E' };
 
     /**
      * Constructor parametrizado de la clase Alumno
@@ -27,13 +24,21 @@ public class Alumno {
      * @param numDni     del alumno (sin letra)
      * @param fecha      del alumno
      * @param matriculas puestas a cursar por el alumno
+     * @see CapitalizarCadenas
+     * @see DNI
      */
-    public Alumno(String nombre, String apellidos, int numDni, List<Matricula> matriculas, String fecha,
-            boolean numerico) throws IOException {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.dni = numDni + "" + letras[numDni % 23];
-        this.fechaNacimiento = obtenerFecha(fecha, numerico);
+    public Alumno(String nombre, String apellidos, int numDni, List<Matricula> matriculas, String fecha)
+            throws IOException {
+        CapitalizarCadenas cadenaCapitalizada = new CapitalizarCadenas(nombre);
+        this.nombre = cadenaCapitalizada.getCadenaCapitalizada();
+
+        cadenaCapitalizada = new CapitalizarCadenas(apellidos);
+        this.apellidos = cadenaCapitalizada.getCadenaCapitalizada();
+
+        DNI objDNI = new DNI(numDni);
+        this.dni = objDNI.getDNI();
+
+        this.fechaNacimiento = obtenerFecha(fecha, true);
         this.matriculas = matriculas;
     }
 
@@ -41,16 +46,9 @@ public class Alumno {
      * Getter del parametro nombre de la clase Alumno
      * 
      * @return el nombre del profesor en cuestion capitalizado
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getNombre() {
-        if (this.nombre.contains(" ")) {
-            this.nombre = capitalizarCadenaCompuesta(this.nombre);
-        } else {
-            this.nombre = capitalizarCadenaSimple(this.nombre);
-        }
-        // TODO: cambiar esto por la clase nueva
         return this.nombre;
     }
 
@@ -58,16 +56,9 @@ public class Alumno {
      * Getter del parametro apellidos de la clase Alumno
      * 
      * @return apellidos del profesor sea 1 o 2 capitalizados
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getApellidos() {
-        if (this.apellidos.contains(" ")) {
-            this.apellidos = capitalizarCadenaCompuesta(this.apellidos);
-        } else {
-            this.apellidos = capitalizarCadenaSimple(this.apellidos);
-        }
-        // TODO: cambiar esto por la clase nueva
         return this.apellidos;
     }
 
@@ -75,6 +66,7 @@ public class Alumno {
      * Getter del parametro dni con la letra del mismo calculada
      * 
      * @return el dni con la letra calculada
+     * @see DNI
      */
     public String getDni() {
         return this.dni;
@@ -103,6 +95,16 @@ public class Alumno {
         return this.matriculas;
     }
 
+    /**
+     * Metodo para obtener la fecha validada, en caso contrario arrojara una
+     * excepcion
+     * 
+     * @param fecha    a validar
+     * @param numerico si se quiere en formato numerico o no
+     * 
+     * @return fecha validada
+     * @throws IOException si la fecha es erronea en alguna de sus cifras
+     */
     private String obtenerFecha(String fecha, boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(fecha);
 
@@ -110,36 +112,11 @@ public class Alumno {
     }
 
     /**
-     * Metodo para capitalizar una cadena compuesta de caracteres. Ej: "juan
-     * antonio" -> "Juan Antonio"
-     * 
-     * @param cadena de caracteres compuesta a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaCompuesta(String cadena) {
-        String[] cadenas = cadena.split(" ");
-        cadenas[0] = cadenas[0].substring(0, 1).toUpperCase() + cadenas[0].substring(1).toLowerCase();
-        cadenas[1] = cadenas[1].substring(0, 1).toUpperCase() + cadenas[1].substring(1).toLowerCase();
-
-        return "" + cadenas[0] + " " + cadenas[1];
-    }
-
-    /**
-     * Metodo para capitalizar una cadena simple de caracteres. Ej: "guillermo" ->
-     * "Guillermo"
-     * 
-     * @param cadena de caracteres simple a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaSimple(String cadena) {
-        return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();
-    }
-
-    /**
      * Metodo que permite al usuario agregar nuevas matriculas a su lista de
      * matriculas
      * 
      * @param newMatricula nueva matricula a añadir
+     * 
      * @return true si se ha añadido correctamente la matricula a la lista
      * @throws Exception si la matricula ya existia en la lista
      */
@@ -162,13 +139,11 @@ public class Alumno {
      * @throws Exception si la matricula no existe dentro de la lista
      */
     public boolean eliminarMatricula(Matricula oldMatricula) throws IOException {
-        if (this.matriculas.contains(oldMatricula)) {
-            matriculas.remove(oldMatricula);
-
-            return true;
-        } else {
+        if (!this.matriculas.contains(oldMatricula)) {
             throw new IOException("Error Alumno.eliminarMatricula(): esa matricula no existe.");
         }
+        matriculas.remove(oldMatricula);
+        return true;
     }
 
     /**
@@ -182,11 +157,16 @@ public class Alumno {
      * @throws Exception si no se ha encontrado la matricula anterior
      */
     public boolean editarMatricula(Matricula oldMatricula, Matricula newMatricula) throws IOException {
-        if (this.matriculas.contains(oldMatricula)) {
-            matriculas.set(matriculas.indexOf(oldMatricula), newMatricula);
-            return true;
-        } else {
+        if (!this.matriculas.contains(oldMatricula)) {
             throw new IOException("Error Alumno.editarMatricula(): esa matricula no existe.");
         }
+        matriculas.set(matriculas.indexOf(oldMatricula), newMatricula);
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s",
+                this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);
     }
 }

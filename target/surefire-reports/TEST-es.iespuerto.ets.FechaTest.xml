@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.iespuerto.ets.FechaTest" time="0.051" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.iespuerto.ets.FechaTest" time="0.017" tests="11" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
-    <property name="java.specification.version" value="11"/>
-    <property name="sun.cpu.isalist" value=""/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/home/daw/Escritorio/GitHub/CentroEducativo/target/test-classes:/home/daw/Escritorio/GitHub/CentroEducativo/target/classes:/home/daw/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.0/junit-jupiter-api-5.6.0.jar:/home/daw/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/daw/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daw/.m2/repository/org/junit/platform/junit-platform-commons/1.6.0/junit-platform-commons-1.6.0.jar:/home/daw/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.0/junit-jupiter-engine-5.6.0.jar:/home/daw/.m2/repository/org/junit/platform/junit-platform-engine/1.6.0/junit-platform-engine-1.6.0.jar:"/>
-    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="java.specification.version" value="18"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Guillermo\Desktop\CentroEducativo\target\test-classes;C:\Users\Guillermo\Desktop\CentroEducativo\target\classes;C:\Users\Guillermo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\Guillermo\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Guillermo\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.vendor.url" value="Unknown"/>
-    <property name="user.timezone" value=""/>
-    <property name="java.vm.specification.version" value="11"/>
-    <property name="os.name" value="Linux"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Africa/Sao_Tome"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="18"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
-    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/daw/Escritorio/GitHub/CentroEducativo/target/surefire/surefirebooter3485213884960656791.jar /home/daw/Escritorio/GitHub/CentroEducativo/target/surefire 2022-05-24T18-36-34_248-jvmRun1 surefire16732983548755230784tmp surefire_010407745288071452970tmp"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-18.0.1.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\Guillermo\AppData\Local\Temp\surefire3683472964632668780\surefirebooter13115641787795889765.jar C:\Users\Guillermo\AppData\Local\Temp\surefire3683472964632668780 2022-05-25T03-01-37_252-jvmRun1 surefire14434228684341003757tmp surefire_06142859404344580228tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/home/daw/Escritorio/GitHub/CentroEducativo/target/test-classes:/home/daw/Escritorio/GitHub/CentroEducativo/target/classes:/home/daw/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.0/junit-jupiter-api-5.6.0.jar:/home/daw/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/daw/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/daw/.m2/repository/org/junit/platform/junit-platform-commons/1.6.0/junit-platform-commons-1.6.0.jar:/home/daw/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.0/junit-jupiter-engine-5.6.0.jar:/home/daw/.m2/repository/org/junit/platform/junit-platform-engine/1.6.0/junit-platform-engine-1.6.0.jar:"/>
+    <property name="surefire.test.class.path" value="C:\Users\Guillermo\Desktop\CentroEducativo\target\test-classes;C:\Users\Guillermo\Desktop\CentroEducativo\target\classes;C:\Users\Guillermo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\Guillermo\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Guillermo\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\Guillermo\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/home/daw"/>
+    <property name="user.home" value="C:\Users\Guillermo"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2022-04-19"/>
-    <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
-    <property name="file.separator" value="/"/>
-    <property name="basedir" value="/home/daw/Escritorio/GitHub/CentroEducativo"/>
+    <property name="java.version.date" value="2022-04-22"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-18.0.1.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Guillermo\Desktop\CentroEducativo"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/daw/Escritorio/GitHub/CentroEducativo/target/surefire/surefirebooter3485213884960656791.jar"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Guillermo\AppData\Local\Temp\surefire3683472964632668780\surefirebooter13115641787795889765.jar"/>
+    <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="11.0.15+10-Ubuntu-0ubuntu0.20.04.1"/>
-    <property name="user.name" value="daw"/>
-    <property name="path.separator" value=":"/>
-    <property name="os.version" value="5.13.0-41-generic"/>
+    <property name="java.runtime.version" value="18.0.1.1+2-6"/>
+    <property name="user.name" value="Guillermo"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="/home/daw/.m2/repository"/>
-    <property name="java.vendor.url.bug" value="Unknown"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="java.version" value="11.0.15"/>
-    <property name="user.dir" value="/home/daw/Escritorio/GitHub/CentroEducativo"/>
+    <property name="localRepository" value="C:\Users\Guillermo\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\GUILLE~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="18.0.1.1"/>
+    <property name="user.dir" value="C:\Users\Guillermo\Desktop\CentroEducativo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-    <property name="sun.os.patch.level" value="unknown"/>
-    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-18.0.1.1\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;E:\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Users\Guillermo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\cmd;E:\;C:\apache-maven-3.8.5\bin;C:\Users\Guillermo\AppData\Local\Microsoft\WindowsApps;C:\Users\Guillermo\AppData\Roaming\npm;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.vendor" value="Private Build"/>
-    <property name="java.vm.version" value="11.0.15+10-Ubuntu-0ubuntu0.20.04.1"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="18.0.1.1+2-6"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="java.class.version" value="55.0"/>
+    <property name="java.class.version" value="62.0"/>
   </properties>
-  <testcase name="getDiaTest" classname="es.iespuerto.ets.FechaTest" time="0.002"/>
-  <testcase name="obtenerAnioTest" classname="es.iespuerto.ets.FechaTest" time="0.003"/>
-  <testcase name="obtenerMesTest" classname="es.iespuerto.ets.FechaTest" time="0.002"/>
+  <testcase name="getDiaTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
+  <testcase name="obtenerAnioTest" classname="es.iespuerto.ets.FechaTest" time="0"/>
+  <testcase name="obtenerMesTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
   <testcase name="getMesNumericoTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
-  <testcase name="obtenerDiaTest" classname="es.iespuerto.ets.FechaTest" time="0.003"/>
-  <testcase name="exceptionObtenerDia" classname="es.iespuerto.ets.FechaTest" time="0.005"/>
-  <testcase name="exceptionObtenerMes" classname="es.iespuerto.ets.FechaTest" time="0.004"/>
-  <testcase name="getMesNombreTest" classname="es.iespuerto.ets.FechaTest" time="0.004"/>
-  <testcase name="getAnioTest" classname="es.iespuerto.ets.FechaTest" time="0.002"/>
-  <testcase name="imprimeFechaTest" classname="es.iespuerto.ets.FechaTest" time="0.003"/>
-  <testcase name="exceptionObtenerAnio" classname="es.iespuerto.ets.FechaTest" time="0.006"/>
+  <testcase name="obtenerDiaTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
+  <testcase name="exceptionObtenerDia" classname="es.iespuerto.ets.FechaTest" time="0.003"/>
+  <testcase name="exceptionObtenerMes" classname="es.iespuerto.ets.FechaTest" time="0.002"/>
+  <testcase name="getMesNombreTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
+  <testcase name="getAnioTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
+  <testcase name="imprimeFechaTest" classname="es.iespuerto.ets.FechaTest" time="0.001"/>
+  <testcase name="exceptionObtenerAnio" classname="es.iespuerto.ets.FechaTest" time="0.002"/>
 </testsuite>

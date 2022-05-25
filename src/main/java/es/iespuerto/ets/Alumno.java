@@ -7,7 +7,6 @@ import java.util.*;
  * Clase de almacenamiento de datos relacionados con cada uno de los alumnos
  * 
  * @author GuillermoSH
- * @version 0.4
  */
 public class Alumno {
     private String nombre;
@@ -26,6 +25,7 @@ public class Alumno {
      * @param matriculas puestas a cursar por el alumno
      * @see CapitalizarCadenas
      * @see DNI
+     * @throws IOException si el DNI es incorrecto
      */
     public Alumno(String nombre, String apellidos, int numDni, List<Matricula> matriculas, String fecha)
             throws IOException {
@@ -77,11 +77,11 @@ public class Alumno {
      * 
      * @param numerico si se desea la fecha con mes numerico o no
      * @return la fecha comprobada mediante la clase {@link Fecha}
-     * @throws Exception si la fecha introducida es incorrecta
+     * @throws IOException si la fecha introducida es incorrecta
      */
     public String getFechaNacimiento(boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(this.fechaNacimiento);
-        this.fechaNacimiento = fechaObj.imprimeFecha(numerico);
+        this.fechaNacimiento = fechaObj.toString(numerico);
 
         return this.fechaNacimiento;
     }
@@ -108,7 +108,7 @@ public class Alumno {
     private String obtenerFecha(String fecha, boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(fecha);
 
-        return fechaObj.imprimeFecha(numerico);
+        return fechaObj.toString(numerico);
     }
 
     /**
@@ -118,7 +118,7 @@ public class Alumno {
      * @param newMatricula nueva matricula a añadir
      * 
      * @return true si se ha añadido correctamente la matricula a la lista
-     * @throws Exception si la matricula ya existia en la lista
+     * @throws IOException si la matricula ya existia en la lista
      */
     public boolean agregarMatricula(Matricula newMatricula) throws IOException {
         if (this.matriculas.contains(newMatricula)) {
@@ -136,7 +136,7 @@ public class Alumno {
      * 
      * @param oldMatricula matricula existente dentro de su lista de matriculas
      * @return true si se ha podido eliminar la matricula correctamente
-     * @throws Exception si la matricula no existe dentro de la lista
+     * @throws IOException si la matricula no existe dentro de la lista
      */
     public boolean eliminarMatricula(Matricula oldMatricula) throws IOException {
         if (!this.matriculas.contains(oldMatricula)) {
@@ -154,7 +154,7 @@ public class Alumno {
      *                     antigua
      * @param oldMatricula matricula ya existente en la lista a modificar
      * @return true si se ha podido editar la matricula anterior correctamente
-     * @throws Exception si no se ha encontrado la matricula anterior
+     * @throws IOException si no se ha encontrado la matricula anterior
      */
     public boolean editarMatricula(Matricula oldMatricula, Matricula newMatricula) throws IOException {
         if (!this.matriculas.contains(oldMatricula)) {
@@ -164,6 +164,12 @@ public class Alumno {
         return true;
     }
 
+    /**
+     * Metodo sobrecargado del toString() de java para devolver un string en el
+     * formato deseado con los datos del alumno
+     * 
+     * @return los datos de cada alumno con el formato deseado
+     */
     @Override
     public String toString() {
         return String.format("Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s",

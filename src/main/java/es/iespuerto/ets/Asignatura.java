@@ -5,7 +5,6 @@ package es.iespuerto.ets;
  * asignatura
  * 
  * @author GuillermoSH
- * @version 0.7
  */
 public class Asignatura {
     private String nombre;

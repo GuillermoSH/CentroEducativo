@@ -4,10 +4,6 @@ package es.iespuerto.ets;
  * Clase DNI para la validacion y calculo de la letra a partir del numero del
  * DNI introducido
  * 
- * @param dni    con la letra calculada y comprobado que es un numero valido
- * @param letras array con las letras de los DNIs ordenadas para hacer el
- *               calculo de la misma correctamente
- * 
  * @author GuillermoSH
  */
 public class DNI {

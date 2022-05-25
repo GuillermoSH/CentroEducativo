@@ -71,9 +71,9 @@ public class FechaTest {
     }
 
     @Test
-    public void imprimeFechaTest() throws Exception {
-        Assertions.assertEquals("29 de febrero de 2012", fecha.imprimeFecha(false));
-        Assertions.assertEquals("29/02/2012", fecha.imprimeFecha(true));
+    public void toStringTest() throws Exception {
+        Assertions.assertEquals("29 de febrero de 2012", fecha.toString(false));
+        Assertions.assertEquals("29/02/2012", fecha.toString(true));
     }
 
     @Test

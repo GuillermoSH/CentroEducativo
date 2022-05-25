@@ -8,7 +8,6 @@ import java.io.*;
  * asociadas a los alumnos que lo soliciten
  * 
  * @author GuillermoSH
- * @version 0.9
  */
 public class Matricula {
     private String dni;
@@ -27,7 +26,7 @@ public class Matricula {
      * @param asignaturas a estudiar por el alumno
      * @param notas       del alumno
      * @param fecha       de realizacion de la matricula
-     * @throws IOException
+     * @throws IOException si al fecha es incorrecta o el DNI es incorrecto
      */
     public Matricula(int numDni, String nombre, List<Asignatura> asignaturas, Map<Asignatura, Double> notas,
             String fecha) throws IOException {
@@ -119,7 +118,7 @@ public class Matricula {
     public String obtenerFecha(String fecha, boolean numerico) throws IOException {
         Fecha fechaObj = new Fecha(fecha);
 
-        return fechaObj.imprimeFecha(numerico);
+        return fechaObj.toString(numerico);
     }
 
     /**
@@ -148,6 +147,13 @@ public class Matricula {
         }
     }
 
+    /**
+     * Metodo para lanzar las excepciones
+     * 
+     * @param condicion a evaluar
+     * @param cadena    a lanzar si falla
+     * @throws NoSuchFieldException si no se cumple la condicion
+     */
     public void exception(boolean condicion, String cadena) throws NoSuchFieldException {
         if (condicion) {
             throw new NoSuchFieldException("Error Matricula." + cadena);
@@ -160,7 +166,7 @@ public class Matricula {
      * 
      * @param newAsignatura nueva asignatura a añadir
      * @return true si se ha podido agregar a la lista la nueva asignatura
-     * @throws Exception si ya existe la asignatura a añadir
+     * @throws NoSuchFieldException si ya existe la asignatura a añadir
      */
     public boolean agregarAsignatura(Asignatura newAsignatura) throws NoSuchFieldException {
         exception(pagada, "agregarAsignatura(): la matricula ya ha sido pagada.");
@@ -177,7 +183,7 @@ public class Matricula {
      * 
      * @param oldAsignatura asignatura a eliminar
      * @return true si se ha podido eliminar la asignatura de la lista
-     * @throws Exception si no existe en la lista la asignatura
+     * @throws NoSuchFieldException si no existe en la lista la asignatura
      */
     public boolean eliminarAsignatura(Asignatura oldAsignatura) throws NoSuchFieldException {
         exception(pagada, "eliminarAsignatura(): la matricula ya ha sido pagada.");
@@ -195,7 +201,7 @@ public class Matricula {
      * @param oldAsignatura antigua asignatura a modificar
      * @param newAsignatura nueva asignatura a añadir
      * @return true si se ha podido editar la asignatura
-     * @throws Exception si no existe en la lista la asignatura
+     * @throws NoSuchFieldException si no existe en la lista la asignatura
      */
     public boolean editarAsignatura(Asignatura oldAsignatura, Asignatura newAsignatura) throws NoSuchFieldException {
         exception(pagada, "editarAsignatura(): la matricula ya ha sido pagada.");
@@ -211,11 +217,10 @@ public class Matricula {
      * matricula
      * 
      * @return los datos de la matricula del alumno
-     * @throws Exception si la fecha es incorrecta
      */
     @Override
     public String toString() {
-        return String.format("Matricula para %s en el centro %s a %s, con las asignaturas:\n    %s", this.dni, this.nombre,
-                this.fecha,this.asignaturas.toString());
+        return String.format("Matricula para %s en el centro %s a %s, con las asignaturas:\n    %s", this.dni,
+                this.nombre, this.fecha, this.asignaturas.toString());
     }
 }

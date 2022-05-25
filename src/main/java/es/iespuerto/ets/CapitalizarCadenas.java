@@ -4,8 +4,6 @@ package es.iespuerto.ets;
  * Clase para capitalizar cadenas compuestas y simples, es decir, capitaliza la
  * primera letra de cada palabra
  * 
- * @param cadenaCapitalizada cadena ya capitalizada
- * 
  * @author GuillermoSH
  */
 public class CapitalizarCadenas {

@@ -8,7 +8,6 @@ import java.util.regex.*;
  * email
  * 
  * @author GuillermoSH
- * @version 0.4
  */
 public class Usuario {
     private String email;
@@ -19,11 +18,12 @@ public class Usuario {
      * 
      * @param email    del usuario
      * @param password del usuario a validar
+     * @throws IllegalArgumentException si no son validos el email o la contrasenia
      */
 <span class="fc" id="L23">    public Usuario(String email, String password) throws IllegalArgumentException {</span>
 <span class="fc" id="L24">        validarEmail(email);</span>
 <span class="fc" id="L25">        this.email = email;</span>
-<span class="fc" id="L26">        comprobarPassword(password);</span>
+<span class="fc" id="L26">        validarPassword(password);</span>
 <span class="fc" id="L27">        this.password = password;</span>
 <span class="fc" id="L28">    }</span>
 
@@ -41,11 +41,12 @@ public class Usuario {
      * requisitos de validacion
      * 
      * @param email a validar y modificar por el anterior
+     * @throws IllegalArgumentException si no es valido el email
      */
     public void setEmail(String email) throws IllegalArgumentException {
-<span class="fc" id="L46">        validarEmail(email);</span>
-<span class="fc" id="L47">        this.email = email;</span>
-<span class="fc" id="L48">    }</span>
+<span class="fc" id="L47">        validarEmail(email);</span>
+<span class="fc" id="L48">        this.email = email;</span>
+<span class="fc" id="L49">    }</span>
 
     /**
      * Getter de la contrasenia del usuario
@@ -53,7 +54,7 @@ public class Usuario {
      * @return contrasenia validada
      */
     public String getPassword() {
-<span class="fc" id="L56">        return this.password;</span>
+<span class="fc" id="L57">        return this.password;</span>
     }
 
     /**
@@ -61,52 +62,50 @@ public class Usuario {
      * los requisitos de validacion
      * 
      * @param password a validar y modificar por la anterior
-     * @throws Exception
+     * @throws IllegalArgumentException si la contrasenia es invalida
      */
     public void setPassword(String password) throws IllegalArgumentException {
-<span class="fc" id="L67">        comprobarPassword(password);</span>
-<span class="fc" id="L68">        this.password = password;</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L68">        validarPassword(password);</span>
+<span class="fc" id="L69">        this.password = password;</span>
+<span class="fc" id="L70">    }</span>
 
     /**
      * Comprobacion de que la contrasenia cumple los requisitos de formato de la
-     * misma devolviendo true o false dependiendo si se ha pasado el
-     * {@link #validarPassword(String)}. Si da falso lanzara una
-     * exception con los requisitos a cumplir.
+     * misma devolviendo true o false dependiendo si se ha pasado la validacion. Si
+     * da falso lanzara una exception con los requisitos a cumplir.
      * 
      * @param password para su validacion
-     * @see #requisitosPassword(String,int,int,int)
-     * @return true o false si se ha validado o no la contrasenia
+     * @throws IllegalArgumentException si la contrasenia es invalida
      */
-    private void comprobarPassword(String password) throws IllegalArgumentException {
-<span class="fc" id="L82">        Pattern pattern = Pattern.compile(&quot;^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,50}$&quot;);</span>
-<span class="fc" id="L83">        Matcher matcher = pattern.matcher(password);</span>
-<span class="fc" id="L84">        boolean valido = matcher.find();</span>
+    private void validarPassword(String password) throws IllegalArgumentException {
+<span class="fc" id="L81">        Pattern pattern = Pattern.compile(&quot;^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,50}$&quot;);</span>
+<span class="fc" id="L82">        Matcher matcher = pattern.matcher(password);</span>
+<span class="fc" id="L83">        boolean valido = matcher.find();</span>
 
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (!valido) {</span>
-<span class="fc" id="L87">            throw new IllegalArgumentException(&quot;Su contraseña no cumple los siguientes requisitos:\n - Al menos 6 caracteres.\n - Minimo 1 digito, 1 caracter en mayusculas y otro en minusculas.&quot;);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (!valido) {</span>
+<span class="fc" id="L86">            throw new IllegalArgumentException(</span>
+<span class="fc" id="L87">                    &quot;Su contraseña no cumple los siguientes requisitos:\n - Al menos 6 caracteres.\n - Minimo 1 digito, 1 caracter en mayusculas y otro en minusculas.&quot;);</span>
         }
 <span class="fc" id="L89">    }</span>
 
     /**
-     * Comprobacion de que el email contiene una de las siguientes terminaciones:
-     * &quot;@gmail.com&quot;, &quot;@hotmail.com&quot; o &quot;@gobiernodecanarias.org&quot;
+     * Comprobacion de que el email contiene una terminacion valida como
+     * &quot;@gmail.com&quot;, &quot;@hotmail.com&quot;, etc
      * 
      * @param email a validar
-     * @return true si el email es correcto
-     * @throws Exception si el email no contiene alguna de las terminaciones
-     *                   nombradas
+     * @throws IllegalArgumentException si el email no contiene una terminacion
+     *                                  valida
      */
     private void validarEmail(String email) throws IllegalArgumentException {
         // Patron para validar el email
-<span class="fc" id="L102">        Pattern pattern = Pattern.compile(&quot;^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$&quot;, Pattern.CASE_INSENSITIVE);</span>
-<span class="fc" id="L103">        Matcher matcher = pattern.matcher(email);</span>
-<span class="fc" id="L104">        boolean valido = matcher.find();</span>
+<span class="fc" id="L101">        Pattern pattern = Pattern.compile(&quot;^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$&quot;, Pattern.CASE_INSENSITIVE);</span>
+<span class="fc" id="L102">        Matcher matcher = pattern.matcher(email);</span>
+<span class="fc" id="L103">        boolean valido = matcher.find();</span>
+
 <span class="fc bfc" id="L105" title="All 2 branches covered.">        if (!valido) {</span>
 <span class="fc" id="L106">            throw new IllegalArgumentException(</span>
-                    &quot;Su email debe ser '@gmail.com', '@hotmail.com' o '@gobiernodecanarias.org'.&quot;);
+<span class="fc" id="L107">                    &quot;Su email debe ser '@gmail.com', '@hotmail.com' o '@gobiernodecanarias.org'.&quot;);</span>
         }
-
-<span class="fc" id="L110">    }</span>
+<span class="fc" id="L109">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

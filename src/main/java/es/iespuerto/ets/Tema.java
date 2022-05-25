@@ -5,7 +5,6 @@ package es.iespuerto.ets;
  * las asignaturas impartidas
  * 
  * @author GuillermoSH
- * @version 1.1
  */
 public class Tema {
     private String nombre;
@@ -14,8 +13,8 @@ public class Tema {
     /**
      * Contructor parametrizado de la clase Tema.
      * 
-     * @param nombre nombre del tema
-     * @param horas  numero de horas dedicadas al tema
+     * @param nombre del tema
+     * @param horas  dedicadas en total al tema
      */
     public Tema(String nombre, int horas) {
         this.nombre = nombre.toLowerCase();
@@ -45,7 +44,7 @@ public class Tema {
      * 
      * @return los datos de cada tema
      */
-    public String imprimeTema() {
+    public String toString() {
         return String.format("%s con %d horas", this.nombre, this.horas);
     }
 }

@@ -90,7 +90,7 @@ public class ProfesorTest {
 
         Assertions.assertTrue(
                 thrown2.getMessage().contains(
-                        "Error, el límite de horas totales a impartir se ha superado."));
+                        "Error: el límite de horas totales a impartir se ha superado."));
     }
 
     @Test
@@ -132,7 +132,7 @@ public class ProfesorTest {
 
         Assertions.assertTrue(
                 thrown2.getMessage().contains(
-                        "Error, el límite de horas totales a impartir se ha superado."));
+                        "Error: el límite de horas totales a impartir se ha superado."));
     }
 
     @Test

@@ -39,7 +39,7 @@ public class MatriculaTest {
         notas.put(asignatura2, 6.1);
         notas.put(asignatura3, 8.5);
         // Creacion de la matricula del alumno1
-        alumno1 = new Matricula(43383780, "IES PUERTO", asignaturas, notas, "22-02-2022",true);
+        alumno1 = new Matricula(43383780, "IES PUERTO", asignaturas, notas, "22-02-2022");
     }
 
     @Test
@@ -63,11 +63,19 @@ public class MatriculaTest {
     }
 
     @Test
-    public void getPrecioTest() {
+    public void getFechaTest() throws IOException{
+        Assertions.assertEquals("22/02/2022",alumno1.getFecha(true));
+        Assertions.assertEquals("22 de febrero de 2022",alumno1.getFecha(false));
+    }
+
+    @Test
+    public void getPrecioTest() throws IOException{
         asignaturas.clear();
 
         asignaturas.add(asignatura1);
         asignaturas.add(asignatura2);
+
+        alumno1 = new Matricula(43383780, "IES PUERTO", asignaturas, notas, "22-02-2022");
 
         double precioTotal = asignatura1.getPrecio() + asignatura2.getPrecio();
         alumno1.pagarMatricula(precioTotal);
@@ -77,6 +85,10 @@ public class MatriculaTest {
 
     @Test
     public void isPagadaTest() {
+        // Importe por debajo del precio de la matricula
+        alumno1.pagarMatricula(100);
+        Assertions.assertFalse(alumno1.isPagada());
+        // Aqui si se paga justo lo necesario para pagar la matricula
         alumno1.pagarMatricula(alumno1.getPrecio());
         Assertions.assertTrue(alumno1.isPagada());
     }
@@ -143,8 +155,7 @@ public class MatriculaTest {
     }
 
     @Test
-    public void imprimeMatriculaTest() throws Exception {
-        Assertions.assertEquals("Matricula del alumno con dni: " + alumno1.getDni() + ", en el centro "
-                + alumno1.getNombre() + ", a " + alumno1.getFecha(), alumno1.imprimeMatricula());
+    public void toStringTest() throws Exception {
+        Assertions.assertTrue(alumno1.toString().contains("Matricula para 43383780F en el centro IES PUERTO a 22/02/2022, con las asignaturas:\n    [Asignatura"));
     }
 }

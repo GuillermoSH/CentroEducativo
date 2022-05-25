@@ -26,8 +26,12 @@ public class Profesor {
      * @param asignaturas asignaturas impartidas por el profesor
      */
     public Profesor(String nombre, String apellidos, String titulacion, List<Asignatura> asignaturas) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
+        CapitalizarCadenas cadenaCapitalizada = new CapitalizarCadenas(nombre);
+        this.nombre = cadenaCapitalizada.getCadenaCapitalizada();
+
+        cadenaCapitalizada = new CapitalizarCadenas(apellidos);
+        this.apellidos = cadenaCapitalizada.getCadenaCapitalizada();
+
         this.titulacion = titulacion;
         this.asignaturas = asignaturas;
     }
@@ -36,16 +40,9 @@ public class Profesor {
      * Getter del parametro nombre de la clase Profesor
      * 
      * @return el nombre del profesor en cuestion capitalizado
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getNombre() {
-        if (this.nombre.contains(" ")) {
-            this.nombre = capitalizarCadenaCompuesta(this.nombre);
-        } else {
-            this.nombre = capitalizarCadenaSimple(this.nombre);
-        }
-        // TODO: cambiar esto por la clase nueva
         return this.nombre;
     }
 
@@ -53,16 +50,9 @@ public class Profesor {
      * Getter del parametro apellidos
      * 
      * @return apellidos del profesor sea 1 o 2 capitalizados
-     * @see #capitalizarCadenaCompuesta(String)
-     * @see #capitalizarCadenaSimple(String)
+     * @see CapitalizarCadenas
      */
     public String getApellidos() {
-        if (this.apellidos.contains(" ")) {
-            this.apellidos = capitalizarCadenaCompuesta(this.apellidos);
-        } else {
-            this.apellidos = capitalizarCadenaSimple(this.apellidos);
-        }
-        // TODO: cambiar esto por la clase nueva
         return this.apellidos;
     }
 
@@ -114,12 +104,11 @@ public class Profesor {
      * @throws Exception si no existe la asignatura
      */
     public boolean eliminarAsignatura(Asignatura oldAsignatura) throws IOException {
-        if (this.asignaturas.contains(oldAsignatura)) {
-            this.asignaturas.remove(oldAsignatura);
-            return true;
-        } else {
+        if (!this.asignaturas.contains(oldAsignatura)) {
             throw new IOException("Error Profesor.eliminarAsignatura(): no existe esa asignatura.");
         }
+        this.asignaturas.remove(oldAsignatura);
+        return true;
     }
 
     /**
@@ -136,38 +125,11 @@ public class Profesor {
     public boolean editarAsignatura(Asignatura oldAsignatura, Asignatura newAsignatura) throws IOException {
         superaLimiteHorasTotales();
 
-        if (this.asignaturas.contains(oldAsignatura)) {
-            this.asignaturas.set(this.asignaturas.indexOf(oldAsignatura), newAsignatura);
-            return true;
-        } else {
+        if (!this.asignaturas.contains(oldAsignatura)) {
             throw new IOException("Error Profesor.editarAsignatura(): no existe esa asignatura.");
         }
-    }
-
-    /**
-     * Metodo para capitalizar una cadena compuesta de caracteres. Ej: "juan
-     * antonio" -> "Juan Antonio"
-     * 
-     * @param cadena de caracteres compuesta a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaCompuesta(String cadena) {
-        String[] cadenas = cadena.split(" ");
-        cadenas[0] = cadenas[0].substring(0, 1).toUpperCase() + cadenas[0].substring(1).toLowerCase();
-        cadenas[1] = cadenas[1].substring(0, 1).toUpperCase() + cadenas[1].substring(1).toLowerCase();
-
-        return "" + cadenas[0] + " " + cadenas[1];
-    }
-
-    /**
-     * Metodo para capitalizar una cadena simple de caracteres. Ej: "guillermo" ->
-     * "Guillermo"
-     * 
-     * @param cadena de caracteres simple a capitalizar
-     * @return cadena de caracteres capitalizando el primer caracter
-     */
-    private String capitalizarCadenaSimple(String cadena) {
-        return cadena.substring(0, 1).toUpperCase() + cadena.substring(1).toLowerCase();
+        this.asignaturas.set(this.asignaturas.indexOf(oldAsignatura), newAsignatura);
+        return true;
     }
 
     /**
@@ -195,7 +157,8 @@ public class Profesor {
      * 
      * @return los datos de cada profesor
      */
-    public String imprimeProfesor() {
+    @Override
+    public String toString() {
         return String.format("Profesor: %s %s, con titulación: %s y asignaturas impartidas:  %s", getNombre(),
                 getApellidos(), this.titulacion, this.asignaturas);
     }

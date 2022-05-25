@@ -39,6 +39,6 @@ public class AsignaturaTest {
     @Test
     public void imprimeAsignaturaTest() {
         Assertions.assertEquals(String.format("Asignatura %s con un precio de %.2f euros: %s", asignatura.getNombre(),
-                asignatura.getPrecio(), asignatura.getTemario()), asignatura.imprimeAsignatura());
+                asignatura.getPrecio(), asignatura.getTemario()), asignatura.toString());
     }
 }

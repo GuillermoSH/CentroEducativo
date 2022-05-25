@@ -7,7 +7,6 @@ import java.io.*;
  * Clase Temario que contiene los datos de cada Tema impartido
  * 
  * @author GuillermoSH
- * @version 0.4
  */
 public class Temario {
     private String nombre;
@@ -16,8 +15,8 @@ public class Temario {
     /**
      * Contructor parametrizado de la clase Temario
      * 
-     * @param nombre nombre de la asignatura referida al temario
-     * @param temas  coleccion de temas de la asignatura
+     * @param nombre del temario
+     * @param temas  lista de temas incluidos en el temario
      */
     public Temario(String nombre, List<Tema> temas) {
         this.nombre = nombre.toUpperCase();
@@ -36,7 +35,7 @@ public class Temario {
     /**
      * Getter de la lista de objetos de Tema, temas de la clase Temario
      * 
-     * @return coleccion de temas de la asignatura
+     * @return lista de temas de la asignatura
      */
     public List<Tema> getTemas() {
         return this.temas;
@@ -63,7 +62,7 @@ public class Temario {
      * 
      * @param newTema nuevo objeto Tema a añadir
      * @return true si se ha añadido correctamente el tema
-     * @throws Exception si el tema ya existe en la lista
+     * @throws IOException si el tema ya existe en la lista
      */
     public boolean agregarTema(Tema newTema) throws IOException {
         if (temas.contains(newTema)) {
@@ -78,7 +77,7 @@ public class Temario {
      * 
      * @param oldTema objeto existente Tema a eliminar
      * @return true si existia el objeto a eliminar
-     * @throws Exception Error Temario.eliminar(): no existe ese tema.
+     * @throws IOException Error Temario.eliminar(): no existe ese tema.
      */
     public boolean eliminarTema(Tema oldTema) throws IOException {
         if (!temas.contains(oldTema)) {
@@ -94,7 +93,7 @@ public class Temario {
      * @param oldTema objeto existente Tema a editar
      * @param newTema objeto nuevo Tema a reemplazar por el anterior
      * @return true si existia eñ objeto a editar
-     * @throws Exception Error Temario.editar(): no existe ese tema
+     * @throws IOException Error Temario.editar(): no existe ese tema
      */
     public boolean editarTema(Tema oldTema, Tema newTema) throws IOException {
         if (!temas.contains(oldTema)) {
@@ -110,7 +109,8 @@ public class Temario {
      * 
      * @return los datos de cada temario
      */
-    public String imprimeTemario() {
+    @Override
+    public String toString() {
         return String.format("Temario %s con %d horas totales: %s", this.nombre, getHorasTotales(),
                 this.temas.toString());
 

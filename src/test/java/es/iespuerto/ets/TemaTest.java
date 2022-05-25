@@ -22,6 +22,6 @@ public class TemaTest {
 
     @Test
     public void imprimeTemaTest() {
-        Assertions.assertEquals("tema1 con 120 horas", tema.imprimeTema());
+        Assertions.assertEquals("tema1 con 120 horas", tema.toString());
     }
 }

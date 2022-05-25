@@ -7,14 +7,13 @@ import java.util.*;
  * Clase de almacenamiento de datos relacionados con cada uno de los alumnos
  * 
  * @author GuillermoSH
- * @version 0.4
  */
 public class Alumno {
     private String nombre;
     private String apellidos;
     private String dni;
     private String fechaNacimiento;
-<span class="fc" id="L17">    private List&lt;Matricula&gt; matriculas = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">    private List&lt;Matricula&gt; matriculas = new ArrayList&lt;&gt;();</span>
 
     /**
      * Constructor parametrizado de la clase Alumno
@@ -26,6 +25,7 @@ public class Alumno {
      * @param matriculas puestas a cursar por el alumno
      * @see CapitalizarCadenas
      * @see DNI
+     * @throws IOException si el DNI es incorrecto
      */
 <span class="fc" id="L30">    public Alumno(String nombre, String apellidos, int numDni, List&lt;Matricula&gt; matriculas, String fecha)</span>
             throws IOException {
@@ -77,11 +77,11 @@ public class Alumno {
      * 
      * @param numerico si se desea la fecha con mes numerico o no
      * @return la fecha comprobada mediante la clase {@link Fecha}
-     * @throws Exception si la fecha introducida es incorrecta
+     * @throws IOException si la fecha introducida es incorrecta
      */
     public String getFechaNacimiento(boolean numerico) throws IOException {
 <span class="fc" id="L83">        Fecha fechaObj = new Fecha(this.fechaNacimiento);</span>
-<span class="fc" id="L84">        this.fechaNacimiento = fechaObj.imprimeFecha(numerico);</span>
+<span class="fc" id="L84">        this.fechaNacimiento = fechaObj.toString(numerico);</span>
 
 <span class="fc" id="L86">        return this.fechaNacimiento;</span>
     }
@@ -108,7 +108,7 @@ public class Alumno {
     private String obtenerFecha(String fecha, boolean numerico) throws IOException {
 <span class="fc" id="L109">        Fecha fechaObj = new Fecha(fecha);</span>
 
-<span class="fc" id="L111">        return fechaObj.imprimeFecha(numerico);</span>
+<span class="fc" id="L111">        return fechaObj.toString(numerico);</span>
     }
 
     /**
@@ -118,7 +118,7 @@ public class Alumno {
      * @param newMatricula nueva matricula a añadir
      * 
      * @return true si se ha añadido correctamente la matricula a la lista
-     * @throws Exception si la matricula ya existia en la lista
+     * @throws IOException si la matricula ya existia en la lista
      */
     public boolean agregarMatricula(Matricula newMatricula) throws IOException {
 <span class="fc bfc" id="L124" title="All 2 branches covered.">        if (this.matriculas.contains(newMatricula)) {</span>
@@ -136,7 +136,7 @@ public class Alumno {
      * 
      * @param oldMatricula matricula existente dentro de su lista de matriculas
      * @return true si se ha podido eliminar la matricula correctamente
-     * @throws Exception si la matricula no existe dentro de la lista
+     * @throws IOException si la matricula no existe dentro de la lista
      */
     public boolean eliminarMatricula(Matricula oldMatricula) throws IOException {
 <span class="fc bfc" id="L142" title="All 2 branches covered.">        if (!this.matriculas.contains(oldMatricula)) {</span>
@@ -154,7 +154,7 @@ public class Alumno {
      *                     antigua
      * @param oldMatricula matricula ya existente en la lista a modificar
      * @return true si se ha podido editar la matricula anterior correctamente
-     * @throws Exception si no se ha encontrado la matricula anterior
+     * @throws IOException si no se ha encontrado la matricula anterior
      */
     public boolean editarMatricula(Matricula oldMatricula, Matricula newMatricula) throws IOException {
 <span class="fc bfc" id="L160" title="All 2 branches covered.">        if (!this.matriculas.contains(oldMatricula)) {</span>
@@ -164,10 +164,16 @@ public class Alumno {
 <span class="fc" id="L164">        return true;</span>
     }
 
+    /**
+     * Metodo sobrecargado del toString() de java para devolver un string en el
+     * formato deseado con los datos del alumno
+     * 
+     * @return los datos de cada alumno con el formato deseado
+     */
     @Override
     public String toString() {
-<span class="fc" id="L169">        return String.format(&quot;Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s&quot;,</span>
-<span class="fc" id="L170">                this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);</span>
+<span class="fc" id="L175">        return String.format(&quot;Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s&quot;,</span>
+<span class="fc" id="L176">                this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

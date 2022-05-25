@@ -5,7 +5,6 @@
  * las asignaturas impartidas
  * 
  * @author GuillermoSH
- * @version 1.1
  */
 public class Tema {
     private String nombre;
@@ -14,13 +13,13 @@ public class Tema {
     /**
      * Contructor parametrizado de la clase Tema.
      * 
-     * @param nombre nombre del tema
-     * @param horas  numero de horas dedicadas al tema
+     * @param nombre del tema
+     * @param horas  dedicadas en total al tema
      */
-<span class="fc" id="L20">    public Tema(String nombre, int horas) {</span>
-<span class="fc" id="L21">        this.nombre = nombre.toLowerCase();</span>
-<span class="fc" id="L22">        this.horas = horas;</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L19">    public Tema(String nombre, int horas) {</span>
+<span class="fc" id="L20">        this.nombre = nombre.toLowerCase();</span>
+<span class="fc" id="L21">        this.horas = horas;</span>
+<span class="fc" id="L22">    }</span>
 
     /**
      * Getter de la variable tema.
@@ -28,7 +27,7 @@ public class Tema {
      * @return nombre del tema
      */
     public String getNombre() {
-<span class="fc" id="L31">        return this.nombre;</span>
+<span class="fc" id="L30">        return this.nombre;</span>
     }
 
     /**
@@ -37,7 +36,7 @@ public class Tema {
      * @return numero de horas dedicadas al tema
      */
     public int getHoras() {
-<span class="fc" id="L40">        return this.horas;</span>
+<span class="fc" id="L39">        return this.horas;</span>
     }
 
     /**
@@ -45,8 +44,8 @@ public class Tema {
      * 
      * @return los datos de cada tema
      */
-    public String imprimeTema() {
-<span class="fc" id="L49">        return String.format(&quot;%s con %d horas&quot;, this.nombre, this.horas);</span>
+    public String toString() {
+<span class="fc" id="L48">        return String.format(&quot;%s con %d horas&quot;, this.nombre, this.horas);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

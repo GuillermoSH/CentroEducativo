@@ -78,6 +78,6 @@ public class TemarioTest {
 
     @Test
     public void imprimeTemarioTest() {
-        Assertions.assertEquals(String.format("Temario %s con %d horas totales: %s", temario.getNombre(), temario.getHorasTotales(), temas.toString()), temario.imprimeTemario());
+        Assertions.assertEquals(String.format("Temario %s con %d horas totales: %s", temario.getNombre(), temario.getHorasTotales(), temas.toString()), temario.toString());
     }
 }

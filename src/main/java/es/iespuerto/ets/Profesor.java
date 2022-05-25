@@ -9,7 +9,6 @@ import java.util.List;
  * comprobacion de que no supera el limite de 3000h de docencia.
  * 
  * @author GuillermoSH
- * @version 0.2
  */
 public class Profesor {
     private String nombre;
@@ -20,10 +19,10 @@ public class Profesor {
     /**
      * Constructor parametrizado de la clase Profesor
      * 
-     * @param nombre      nombre del profesor compuesto o simple
-     * @param apellidos   apellidos del profesor
-     * @param titulacion  titulacion del profesor
-     * @param asignaturas asignaturas impartidas por el profesor
+     * @param nombre      del profesor compuesto o simple
+     * @param apellidos   del profesor
+     * @param titulacion  del profesor
+     * @param asignaturas impartidas por el profesor
      */
     public Profesor(String nombre, String apellidos, String titulacion, List<Asignatura> asignaturas) {
         CapitalizarCadenas cadenaCapitalizada = new CapitalizarCadenas(nombre);
@@ -81,8 +80,8 @@ public class Profesor {
      * 
      * @param newAsignatura nueva asignatura a añadir
      * @return true si se ha podido agregar a la lista la nueva asignatura
-     * @throws Exception si se supera el limite de horas a impartir o si ya existe
-     *                   la asignatura a añadir
+     * @throws IOException si se supera el limite de horas a impartir o si ya existe
+     *                     la asignatura a añadir
      */
     public boolean agregarAsignatura(Asignatura newAsignatura) throws IOException {
         superaLimiteHorasTotales();
@@ -101,7 +100,7 @@ public class Profesor {
      * 
      * @param oldAsignatura asignatura a eliminar
      * @return true si se ha podido eliminar la asignatura de la lista
-     * @throws Exception si no existe la asignatura
+     * @throws IOException si no existe la asignatura
      */
     public boolean eliminarAsignatura(Asignatura oldAsignatura) throws IOException {
         if (!this.asignaturas.contains(oldAsignatura)) {
@@ -119,8 +118,8 @@ public class Profesor {
      * @param oldAsignatura antigua asignatura a modificar
      * @param newAsignatura nueva asignatura a añadir
      * @return true si se ha podido agregar a la lista la nueva asignatura
-     * @throws Exception si se supera el limite de horas a impartir o si no existe
-     *                   en la lista
+     * @throws IOException si se supera el limite de horas a impartir o si no existe
+     *                     en la lista
      */
     public boolean editarAsignatura(Asignatura oldAsignatura, Asignatura newAsignatura) throws IOException {
         superaLimiteHorasTotales();
@@ -135,6 +134,8 @@ public class Profesor {
     /**
      * Metodo para comprobar que el limite estipulado de 3000h maximo por profesor
      * de docencia escolar no se supera
+     * 
+     * @throws IOException si se supera el limite de horas a impartir
      */
     private void superaLimiteHorasTotales() throws IOException {
         int horasTotales = 0;
@@ -146,7 +147,7 @@ public class Profesor {
 
             if (horasTotales > 3000) {
                 throw new IOException(
-                        "Error, el límite de horas totales a impartir se ha superado.");
+                        "Error: el límite de horas totales a impartir se ha superado.");
             }
         }
     }

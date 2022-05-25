@@ -7,7 +7,6 @@ import java.io.*;
  * no dependiendo del mes que se le introduzca o del anyo si es bisiesto o no.
  * 
  * @author GuillermoSH
- * @version 1.0
  */
 public class Fecha {
     private int dia;
@@ -131,7 +130,7 @@ public class Fecha {
      * Metodo para la verificacion de que el anyo es bisiesto
      * 
      * @param anio a verificar si es bisiesto o no
-     * @return True o false dependiendo de si es bisiesto
+     * @return true o false dependiendo de si es bisiesto
      */
     private boolean esBisiesto(int anio) {
         return (anio % 4 == 0 && anio % 100 != 0 || anio % 400 == 0);
@@ -144,9 +143,8 @@ public class Fecha {
      * 
      * @param numerico si se quiere la fecha con mes numerico o no
      * @return como String la fecha con el mes en formato numerico o como nombre
-     * @throws Exception si algun parametro de la fecha es incorrecto
      */
-    public String imprimeFecha(boolean numerico) {
+    public String toString(boolean numerico) {
         if (!numerico) {
             return String.format("%d de %s de %d", this.dia, getMesNombre(), this.anio);
         }

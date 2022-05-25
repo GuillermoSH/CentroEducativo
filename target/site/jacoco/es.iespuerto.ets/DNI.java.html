@@ -4,16 +4,12 @@
  * Clase DNI para la validacion y calculo de la letra a partir del numero del
  * DNI introducido
  * 
- * @param dni    con la letra calculada y comprobado que es un numero valido
- * @param letras array con las letras de los DNIs ordenadas para hacer el
- *               calculo de la misma correctamente
- * 
  * @author GuillermoSH
  */
 public class DNI {
     private String dni;
-<span class="fc" id="L15">    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',</span>
-            'H', 'L', 'C', 'K', 'E' };
+<span class="fc" id="L11">    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',</span>
+<span class="fc" id="L12">            'H', 'L', 'C', 'K', 'E' };</span>
 
     /**
      * Constructor parametrizado de la clase con el metodo de validacion y calculo
@@ -23,9 +19,9 @@ public class DNI {
      * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
      * @see #obtenerDNI(int)
      */
-<span class="fc" id="L26">    public DNI(int numeroDNI) throws IllegalArgumentException {</span>
-<span class="fc" id="L27">        this.dni = obtenerDNI(numeroDNI);</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L22">    public DNI(int numeroDNI) throws IllegalArgumentException {</span>
+<span class="fc" id="L23">        this.dni = obtenerDNI(numeroDNI);</span>
+<span class="fc" id="L24">    }</span>
 
     /**
      * Getter del dni ya con todas las comprobaciones hechas y calculada la letra
@@ -34,7 +30,7 @@ public class DNI {
      * @return el dni con letra
      */
     public String getDNI() {
-<span class="fc" id="L37">        return this.dni;</span>
+<span class="fc" id="L33">        return this.dni;</span>
     }
 
     /**
@@ -45,11 +41,11 @@ public class DNI {
      * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
      */
     private void dniValido(int numeroDNI) throws IllegalArgumentException {
-<span class="fc" id="L48">        String DNI = &quot;&quot; + numeroDNI;</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (DNI.length() != 8) {</span>
-<span class="fc" id="L50">            throw new IllegalArgumentException(&quot;Error DNI.dniValido(): el numero debe contener 8 digitos.&quot;);</span>
+<span class="fc" id="L44">        String DNI = &quot;&quot; + numeroDNI;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (DNI.length() != 8) {</span>
+<span class="fc" id="L46">            throw new IllegalArgumentException(&quot;Error DNI.dniValido(): el numero debe contener 8 digitos.&quot;);</span>
         }
-<span class="fc" id="L52">    }</span>
+<span class="fc" id="L48">    }</span>
 
     /**
      * Metodo que calcula la letra del dni habiendose asegurado antes de que el
@@ -60,9 +56,9 @@ public class DNI {
      * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
      */
     private String obtenerDNI(int numeroDNI) throws IllegalArgumentException {
-<span class="fc" id="L63">        dniValido(numeroDNI);</span>
+<span class="fc" id="L59">        dniValido(numeroDNI);</span>
 
-<span class="fc" id="L65">        return numeroDNI + &quot;&quot; + letras[numeroDNI % 23];</span>
+<span class="fc" id="L61">        return numeroDNI + &quot;&quot; + letras[numeroDNI % 23];</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

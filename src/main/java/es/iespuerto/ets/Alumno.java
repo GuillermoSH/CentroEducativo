@@ -172,7 +172,7 @@ public class Alumno {
      */
     @Override
     public String toString() {
-        return String.format("Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s",
+        return String.format("Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:%n    %s",
                 this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);
     }
 }

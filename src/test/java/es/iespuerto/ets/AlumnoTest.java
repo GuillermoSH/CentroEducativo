@@ -60,22 +60,24 @@ public class AlumnoTest {
 
     @Test
     public void getApellidosTest() throws IOException {
-        assertEquals("Hernandez Perez", alumno1.getApellidos());
+        assertEquals("Hernandez Perez", alumno1.getApellidos(),"Capitaliza solo la primera letra de cada uno de los apellidos que se hayan introducido.");
+        
         alumno2 = new Alumno("MaRIA", "GarCIA", 43651235, matriculas, "04-12-2000");
-        assertEquals("Garcia", alumno2.getApellidos());
+        assertEquals("Garcia", alumno2.getApellidos(),"Capitaliza solo la primera letra del apellido.");
     }
 
     @Test
     public void getDniTest() {
-        assertEquals("43383780F", alumno1.getDni());
-        assertEquals("43651235H", alumno2.getDni());
+        assertEquals("43383780F", alumno1.getDni(), "43383780 % 23 = 8 que seria igual a la letra F");
+        assertEquals("43651235H", alumno2.getDni(), "43651235 % 23 = 19 que seria igual a la letra H");
     }
 
     @Test
     public void getFechaNacimientoTest() throws Exception {
-        assertEquals("24 de abril de 2004", alumno1.getFechaNacimiento(false));
-        assertEquals("04/12/2000", alumno2.getFechaNacimiento(true));
-        // assertEquals("24/04/2004", alumno1.getFechaNacimiento(true));
+        assertEquals("24 de abril de 2004", alumno1.getFechaNacimiento(false),
+                "Al poner numerico a false la fecha se imprimira con el mes en formato String");
+        assertEquals("04/12/2000", alumno2.getFechaNacimiento(true),
+                "Al poner numerico a true la fecha se imprimira con el mes en formato numerico");
     }
 
     @Test
@@ -95,12 +97,12 @@ public class AlumnoTest {
 
     @Test
     public void getMatriculasTest() {
-        assertEquals(matriculas, alumno1.getMatriculas());
+        assertEquals(matriculas, alumno1.getMatriculas(),"La lista de objetos matricula debe ser la misma que la creada en los test");
     }
 
     @Test
     public void agregarMatriculaTest() throws Exception {
-        assertTrue(alumno2.agregarMatricula(matricula2022));
+        assertTrue(alumno2.agregarMatricula(matricula2022),"Devuelve true si la matricula se ha podido insertar en la lista sin problemas");
     }
 
     @Test

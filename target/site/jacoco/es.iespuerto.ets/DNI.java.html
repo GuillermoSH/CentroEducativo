@@ -9,7 +9,7 @@
 public class DNI {
     private String dni;
 <span class="fc" id="L11">    private char[] letras = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V',</span>
-<span class="fc" id="L12">            'H', 'L', 'C', 'K', 'E' };</span>
+            'H', 'L', 'C', 'K', 'E' };
 
     /**
      * Constructor parametrizado de la clase con el metodo de validacion y calculo
@@ -41,8 +41,8 @@ public class DNI {
      * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
      */
     private void dniValido(int numeroDNI) throws IllegalArgumentException {
-<span class="fc" id="L44">        String DNI = &quot;&quot; + numeroDNI;</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (DNI.length() != 8) {</span>
+<span class="fc" id="L44">        String dniInvalido = numeroDNI + &quot;&quot;;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (dniInvalido.length() != 8) {</span>
 <span class="fc" id="L46">            throw new IllegalArgumentException(&quot;Error DNI.dniValido(): el numero debe contener 8 digitos.&quot;);</span>
         }
 <span class="fc" id="L48">    }</span>

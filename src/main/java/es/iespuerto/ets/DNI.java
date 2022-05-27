@@ -41,8 +41,8 @@ public class DNI {
      * @throws IllegalArgumentException si el DNI no llega a los 8 digitos
      */
     private void dniValido(int numeroDNI) throws IllegalArgumentException {
-        String DNI = "" + numeroDNI;
-        if (DNI.length() != 8) {
+        String dniInvalido = numeroDNI + "";
+        if (dniInvalido.length() != 8) {
             throw new IllegalArgumentException("Error DNI.dniValido(): el numero debe contener 8 digitos.");
         }
     }

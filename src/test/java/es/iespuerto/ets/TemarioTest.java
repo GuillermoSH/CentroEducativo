@@ -1,5 +1,6 @@
 package es.iespuerto.ets;
 
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 import org.junit.jupiter.api.*;
 
@@ -11,7 +12,7 @@ public class TemarioTest {
     ArrayList<Tema> temas = null;
 
     @BeforeEach
-    public void Before() {
+    public void beforeEach() {
         tema1 = new Tema("Tema1", 120);
         tema2 = new Tema("Tema2", 40);
         tema3 = new Tema("Tema3", 80);
@@ -25,29 +26,29 @@ public class TemarioTest {
 
     @Test
     public void getNombreTest() {
-        Assertions.assertEquals("TEMARIO INTRODUCCION", temario.getNombre());
+        assertEquals("TEMARIO INTRODUCCION", temario.getNombre());
     }
 
     @Test
     public void getTemas() {
-        Assertions.assertEquals(temas, temario.getTemas());
+        assertEquals(temas, temario.getTemas());
     }
 
     @Test
     public void getHorasTotalesTest() {
-        Assertions.assertEquals(tema1.getHoras() + tema2.getHoras(), temario.getHorasTotales());
+        assertEquals(tema1.getHoras() + tema2.getHoras(), temario.getHorasTotales());
     }
 
     @Test
     public void agregarTemaTest() throws Exception {
-        Assertions.assertTrue(temario.agregarTema(tema3));
+        assertTrue(temario.agregarTema(tema3));
     }
 
     @Test
     public void exceptionAgregarTemaTest() {
         Exception thrown = Assertions.assertThrows(Exception.class, () -> temario.agregarTema(tema1));
 
-        Assertions.assertTrue(thrown.getMessage().contains("Error Temario.agregarTema(): el tema ya existe."));
+        assertTrue(thrown.getMessage().contains("Error Temario.agregarTema(): el tema ya existe."));
     }
 
     @Test

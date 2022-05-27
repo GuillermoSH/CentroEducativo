@@ -44,11 +44,11 @@ public class CapitalizarCadenas {
      */
     public String capitalizarCadenaCompuesta(String cadena) {
         String[] cadenas = cadena.split(" ");
-        String resultado = "";
+        StringBuilder resultado = new StringBuilder();
 
         for (int i = 0; i < cadenas.length; i++) {
             cadenas[i] = cadenas[i].substring(0, 1).toUpperCase() + cadenas[i].substring(1).toLowerCase();
-            resultado += " " + cadenas[i];
+            resultado.append(" " + cadenas[i]);
         }
         return resultado.substring(1);
     }

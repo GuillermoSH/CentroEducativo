@@ -27,8 +27,8 @@ public class Alumno {
      * @see DNI
      * @throws IOException si el DNI es incorrecto
      */
-<span class="fc" id="L30">    public Alumno(String nombre, String apellidos, int numDni, List&lt;Matricula&gt; matriculas, String fecha)</span>
-            throws IOException {
+    public Alumno(String nombre, String apellidos, int numDni, List&lt;Matricula&gt; matriculas, String fecha)
+<span class="fc" id="L31">            throws IOException {</span>
 <span class="fc" id="L32">        CapitalizarCadenas cadenaCapitalizada = new CapitalizarCadenas(nombre);</span>
 <span class="fc" id="L33">        this.nombre = cadenaCapitalizada.getCadenaCapitalizada();</span>
 
@@ -172,8 +172,8 @@ public class Alumno {
      */
     @Override
     public String toString() {
-<span class="fc" id="L175">        return String.format(&quot;Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:\n    %s&quot;,</span>
-<span class="fc" id="L176">                this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);</span>
+<span class="fc" id="L175">        return String.format(&quot;Alumno %s %s con DNI %s y fecha de nacimiento %s, esta matriculado en:%n    %s&quot;,</span>
+                this.nombre, this.apellidos, this.dni, this.fechaNacimiento, this.matriculas);
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

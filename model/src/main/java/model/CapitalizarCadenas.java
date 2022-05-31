@@ -1,4 +1,4 @@
-package es.iespuerto.ets;
+package model;
 
 /**
  * Clase para capitalizar cadenas compuestas y simples, es decir, capitaliza la

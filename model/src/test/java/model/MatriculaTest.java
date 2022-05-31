@@ -1,4 +1,4 @@
-package es.iespuerto.ets;
+package model;
 
 import java.util.*;
 import java.io.*;

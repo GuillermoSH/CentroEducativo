@@ -1,4 +1,4 @@
-package es.iespuerto.ets;
+package model;
 
 import org.junit.jupiter.api.*;
 

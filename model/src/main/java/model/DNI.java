@@ -1,4 +1,4 @@
-package es.iespuerto.ets;
+package model;
 
 /**
  * Clase DNI para la validacion y calculo de la letra a partir del numero del

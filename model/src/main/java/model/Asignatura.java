@@ -1,4 +1,4 @@
-package es.iespuerto.ets;
+package model;
 
 /**
  * Clase asignatura para el almacenaje de los datos de temarios asignados a cada

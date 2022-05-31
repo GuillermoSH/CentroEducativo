@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+model,es.iespuerto.ets,Tema,0,32,0,0,0,7,0,4,0,4
+model,es.iespuerto.ets,Fecha,0,278,0,24,0,29,0,19,0,7
+model,es.iespuerto.ets,Alumno,0,164,0,6,0,33,0,14,0,11
+model,es.iespuerto.ets,DNI,0,132,0,2,0,11,0,5,0,4
+model,es.iespuerto.ets,CapitalizarCadenas,0,76,0,4,0,13,0,6,0,4
+model,es.iespuerto.ets,Matricula,0,211,0,10,0,46,0,21,0,16
+model,es.iespuerto.ets,Profesor,0,159,0,10,0,37,0,15,0,10
+model,es.iespuerto.ets,Asignatura,0,57,0,0,0,9,0,5,0,5
+model,es.iespuerto.ets,Temario,0,124,0,8,0,27,0,12,0,8
+model,es.iespuerto.ets,Usuario,0,72,0,4,0,26,0,9,0,7
